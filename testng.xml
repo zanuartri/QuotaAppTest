@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="QuotaApp Suite">
+    <listeners>
+        <listener class-name="com.g2academy.utilities.Listeners" />
+    </listeners>
+    <test thread-count="5" name="QuotaApp API Test">
+        <classes>
+            <class name="com.g2academy.testcases.TC001_Get" />
+            <class name="com.g2academy.testcases.TC002_GetById" />
+            <class name="com.g2academy.testcases.TC003_Post" />
+            <class name="com.g2academy.testcases.TC004_Put" />
+            <class name="com.g2academy.testcases.TC005_Delete" />
+        </classes>
+    </test>
+</suite>
