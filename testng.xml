@@ -8,11 +8,11 @@
     </listeners>
     <test thread-count="5" name="QuotaApp API Test">
         <classes>
-            <class name="com.g2academy.testcases.TC001_Get" />
-            <class name="com.g2academy.testcases.TC002_GetById" />
-            <class name="com.g2academy.testcases.TC003_Post" />
-            <class name="com.g2academy.testcases.TC004_Put" />
-            <class name="com.g2academy.testcases.TC005_Delete" />
+            <class name="com.g2academy.basicfunctionality.TC001_Get" />
+            <class name="com.g2academy.basicfunctionality.TC002_GetById" />
+            <class name="com.g2academy.basicfunctionality.TC003_Post" />
+            <class name="com.g2academy.basicfunctionality.TC004_Put" />
+            <class name="com.g2academy.basicfunctionality.TC005_Delete" />
         </classes>
     </test>
 </suite>

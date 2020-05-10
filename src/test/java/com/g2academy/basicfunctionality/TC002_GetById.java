@@ -1,39 +1,41 @@
-package com.g2academy.testcases;
+package com.g2academy.basicfunctionality;
 
 import com.g2academy.base.Assertion;
 import com.g2academy.base.TestBase;
 import io.restassured.http.Method;
-import io.restassured.path.json.JsonPath;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class TC005_Delete extends TestBase {
+public class TC002_GetById extends TestBase {
 	private Random random = new Random();
+	private String randomId;
 
 	@BeforeClass
 	public void beforeClass() throws InterruptedException {
-		System.out.println("[TC005 Started]");
+		System.out.println("[TC002 Started]");
 
-		int randomNumber = 20 + random.nextInt(10);
-		String randomId = Integer.toString(randomNumber);
+		int randomNumber = 10 + random.nextInt(10);
+		randomId = Integer.toString(randomNumber);
 
 		setResponse(
-				getHttpRequest().request(Method.DELETE, "/covid19/" + randomId)
+				getHttpRequest().request(Method.GET, "/covid19/" + randomId)
 		);
 
 		Thread.sleep(3);
 	}
-	
+
 	@Test
-	public void deleteAssertion() {
-		System.out.println("[DELETE Assertion]");
+	public void getByIdAssertion() {
+		System.out.println("[GET By ID Assertion]");
 
 		Assertion.statusCode(200);
 		Assertion.statusLine("HTTP/1.1 200 OK");
+		Assertion.responseBodyContains(randomId);
 
+		Assertion.responseTime(3000);
 		Assertion.contentType("application/json");
 		Assertion.serverType("Cowboy");
 		Assertion.vary("Accept-Encoding");
@@ -42,7 +44,7 @@ public class TC005_Delete extends TestBase {
 	
 	@AfterClass
 	public void afterClass() {
-		System.out.println("[TC005 Finished]");
+		System.out.println("[TC002 Finished]");
 		// do some code
 	}
 }

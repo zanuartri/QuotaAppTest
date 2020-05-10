@@ -1,4 +1,4 @@
-package com.g2academy.testcases;
+package com.g2academy.basicfunctionality;
 
 import com.g2academy.base.Assertion;
 import com.g2academy.base.TestBase;
