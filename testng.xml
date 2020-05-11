@@ -3,16 +3,41 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="QuotaApp Suite">
-    <listeners>
-        <listener class-name="com.g2academy.utilities.Listeners" />
-    </listeners>
-    <test thread-count="5" name="QuotaApp API Test">
+    <test thread-count="5" name="Basic Functionality Test">
         <classes>
-            <class name="com.g2academy.basicfunctionality.TC001_Get" />
-            <class name="com.g2academy.basicfunctionality.TC002_GetById" />
-            <class name="com.g2academy.basicfunctionality.TC003_Post" />
-            <class name="com.g2academy.basicfunctionality.TC004_Put" />
-            <class name="com.g2academy.basicfunctionality.TC005_Delete" />
+            <class name="com.g2academy.testcases.basicfunctionality.TC001_Get" />
+            <class name="com.g2academy.testcases.basicfunctionality.TC002_GetById" />
+            <class name="com.g2academy.testcases.basicfunctionality.TC003_Post" />
+            <class name="com.g2academy.testcases.basicfunctionality.TC004_Put" />
+            <class name="com.g2academy.testcases.basicfunctionality.TC005_Delete" />
+        </classes>
+    </test>
+    <test name="Login Menu Test">
+        <classes>
+            <class name="com.g2academy.testcases.loginmenu.TC001_Login_Positive" />
+            <class name="com.g2academy.testcases.loginmenu.TC002_Login_Negative" />
+            <class name="com.g2academy.testcases.loginmenu.TC003_Register_Positive" />
+            <class name="com.g2academy.testcases.loginmenu.TC004_Register_Negative" />
+            <class name="com.g2academy.testcases.loginmenu.TC005_ForgotPassword_Positive" />
+            <class name="com.g2academy.testcases.loginmenu.TC006_ForgotPassword_Negative" />
+        </classes>
+    </test>
+    <test name="Home Menu Test">
+
+    </test>
+    <test name="History Menu Test">
+
+    </test>
+    <test name="Profile Menu Test">
+        <classes>
+            <class name="com.g2academy.testcases.mainmenu.profile.TC001_ChangeFullName_Positive" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC002_ChangeFullName_Negative" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC003_ChangeEmail_Positive" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC004_ChangeEmail_Negative" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC005_ChangePhoneNumber_Positive" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC006_ChangePhoneNumber_Negative" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC007_ChangePassword_Positive" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC008_ChangePassword_Negative" />
         </classes>
     </test>
 </suite>

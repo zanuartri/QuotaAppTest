@@ -4,7 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.PropertyConfigurator;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.logging.Logger;
 
@@ -37,12 +38,17 @@ public class TestBase {
 		TestBase.logger = logger;
 	}
 
-	@BeforeClass
+	@BeforeTest
 	public void setup() {
 		logger = Logger.getLogger("QuotaAppRestAPI");
 		PropertyConfigurator.configure("Log4j.properties");
-
 		RestAssured.baseURI = "https://5e9fa8e411b078001679c9e5.mockapi.io/g2academy/";
 		httpRequest = RestAssured.given();
+	}
+
+	@AfterTest
+	public void teardown() {
+		// do some code
+
 	}
 }
