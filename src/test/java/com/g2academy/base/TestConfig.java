@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.logging.Logger;
 
-public class TestBase {
+public class TestConfig {
 	private static RequestSpecification httpRequest;
 	private static Response response;
 	private static Logger logger;
@@ -19,7 +19,7 @@ public class TestBase {
 	}
 
 	public static void setHttpRequest(RequestSpecification httpRequest) {
-		TestBase.httpRequest = httpRequest;
+		TestConfig.httpRequest = httpRequest;
 	}
 
 	public static Response getResponse() {
@@ -27,7 +27,7 @@ public class TestBase {
 	}
 
 	public static void setResponse(Response response) {
-		TestBase.response = response;
+		TestConfig.response = response;
 	}
 
 	public static Logger getLogger() {
@@ -35,14 +35,14 @@ public class TestBase {
 	}
 
 	public static void setLogger(Logger logger) {
-		TestBase.logger = logger;
+		TestConfig.logger = logger;
 	}
 
 	@BeforeTest
 	public void setup() {
 		logger = Logger.getLogger("QuotaAppRestAPI");
 		PropertyConfigurator.configure("Log4j.properties");
-		RestAssured.baseURI = "https://5e9fa8e411b078001679c9e5.mockapi.io/g2academy/";
+		RestAssured.baseURI = "https://testing-connection-coba.herokuapp.com";
 		httpRequest = RestAssured.given();
 	}
 
