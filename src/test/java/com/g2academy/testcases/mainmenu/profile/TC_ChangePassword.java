@@ -7,27 +7,26 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC001_ChangeFullName extends MainMenuConfig {
+public class TC_ChangePassword extends MainMenuConfig {
     private User user = new User();
 
-    @DataProvider(name="dataChangeFullName")
+    @DataProvider(name="dataChangePassword")
     Object[][] getDataFromExcel() throws IOException {
-        return getDataProfileMenu("Change Full Name");
+        return getDataProfileMenu("Change Password");
     }
 
-    @Test(dataProvider = "dataChangeFullName")
-    public void testChangeFullName(
+    @Test(dataProvider = "dataChangePassword")
+    public void testChangePassword(
             String description,
-            String fullname,
             String phonenumber,
             String password,
+            String newpassword,
             String otpcode,
             String statuscode,
             String responsebody
     ) throws InterruptedException {
-        user.setFullname(fullname);
         user.setPhonenumber(phonenumber);
         user.setPassword(password);
-        changeFullName(user);
+        changePassword(user, newpassword);
     }
 }

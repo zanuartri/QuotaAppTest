@@ -7,27 +7,25 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC002_ChangeEmail extends MainMenuConfig {
+public class TC_ChangePhoneNumber extends MainMenuConfig {
     private User user = new User();
 
-    @DataProvider(name="dataChangeEmail")
+    @DataProvider(name="dataChangePhoneNumber")
     Object[][] getDataFromExcel() throws IOException {
-        return getDataProfileMenu("Change Email");
+        return getDataProfileMenu("Change Phone Number");
     }
 
-    @Test(dataProvider = "dataChangeEmail")
-    public void testChangeEmail(
+    @Test(dataProvider = "dataChangePhoneNumber")
+    public void testChangePhoneNumber(
             String description,
-            String email,
             String phonenumber,
             String password,
             String otpcode,
             String statuscode,
             String responsebody
     ) throws InterruptedException {
-        user.setEmail(email);
         user.setPhonenumber(phonenumber);
         user.setPassword(password);
-        changeEmail(user);
+        changePhoneNumber(user);
     }
 }

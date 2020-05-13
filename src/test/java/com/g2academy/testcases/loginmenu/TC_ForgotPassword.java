@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC003_ForgotPassword extends LoginMenuConfig {
+public class TC_ForgotPassword extends LoginMenuConfig {
     private User user = new User();
     private Assertion assertion = new Assertion();
 

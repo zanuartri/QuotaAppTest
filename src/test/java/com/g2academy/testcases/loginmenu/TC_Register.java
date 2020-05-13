@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC002_Register extends LoginMenuConfig {
+public class TC_Register extends LoginMenuConfig {
     private User user = new User();
     private Assertion assertion = new Assertion();
 
