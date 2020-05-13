@@ -34,6 +34,8 @@ public class TC_Register extends LoginMenuConfig {
             String statusCodeConfirmation,
             String responseBodyConfirmation
     ) throws InterruptedException {
+        System.out.println(description);
+
         user.setFullname(fullName);
         user.setEmail(email);
         user.setPhonenumber(phoneNumber);
@@ -45,9 +47,9 @@ public class TC_Register extends LoginMenuConfig {
         assertion.responseBodyContains(responseBodyRequest);
         Thread.sleep(1000);
 
-        setOtpAndToken(user, verificationMethod, otpCode, statusOtpCode, token);
-        Thread.sleep(100);
-        assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-        assertion.responseBodyContains(responseBodyConfirmation);
+//        setOtpAndToken(user, verificationMethod, otpCode, statusOtpCode, token);
+//        Thread.sleep(100);
+//        assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
+//        assertion.responseBodyContains(responseBodyConfirmation);
     }
 }

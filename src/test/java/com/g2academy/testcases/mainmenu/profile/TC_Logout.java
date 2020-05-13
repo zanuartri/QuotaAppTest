@@ -1,25 +1,35 @@
-package com.g2academy.testcases.loginmenu;
+package com.g2academy.testcases.mainmenu.profile;
 
 import com.g2academy.base.Assertion;
 import com.g2academy.base.LoginMenuConfig;
+import com.g2academy.base.MainMenuConfig;
 import com.g2academy.model.User;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC_Login extends LoginMenuConfig {
+public class TC_Logout extends MainMenuConfig {
+    LoginMenuConfig loginMenu = new LoginMenuConfig();
     private User user = new User();
     private Assertion assertion = new Assertion();
 
-    @DataProvider(name="dataLogin")
+    @DataProvider(name="dataLogout")
     Object[][] getDataFromExcel() throws IOException {
-        return getDataLoginMenu("Login");
+        return getDataProfileMenu("Logout");
     }
 
-    @Test(dataProvider = "dataLogin", timeOut = 15000)
-    public void testLogin(
+    @BeforeMethod
+    public void beforeMethod() throws InterruptedException {
+        user.setPhonenumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        loginMenu.login(user);
+        Thread.sleep(1000);
+    }
+
+    @Test(dataProvider = "dataLogout", timeOut = 15000)
+    public void testLogout(
             String description,
             String phoneNumber,
             String password,
@@ -30,19 +40,9 @@ public class TC_Login extends LoginMenuConfig {
 
         user.setPhonenumber(phoneNumber);
         user.setPassword(password);
-
-        login(user);
-        Thread.sleep(100);
+        loginMenu.logout(user);
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
-        Thread.sleep(1000);
-    }
-
-    @AfterMethod
-    public void afterMethod() throws InterruptedException {
-        user.setPhonenumber("+6281252930398");
-        user.setPassword("Zanuar30@@");
-        logout(user);
         Thread.sleep(1000);
     }
 }

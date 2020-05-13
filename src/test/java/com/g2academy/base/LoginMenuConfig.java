@@ -5,8 +5,6 @@ import com.g2academy.utilities.GetDataFromExcel;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @SuppressWarnings("unchecked")
 public class LoginMenuConfig extends RequestConfig {
@@ -15,6 +13,13 @@ public class LoginMenuConfig extends RequestConfig {
         requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("password", user.getPassword());
         postRequest(requestParams, "/api/auth/signin");
+    }
+
+    public void logout(User user) {
+        JSONObject requestParams = new JSONObject();
+        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("password", user.getPassword());
+        postRequest(requestParams, "/api/auth/signout");
     }
 
     public void register(User user, String confirmPassword) {
@@ -28,16 +33,9 @@ public class LoginMenuConfig extends RequestConfig {
     }
 
     public void forgotPassword(User user) {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-        String createdDate = now.format(formatter);
-
         JSONObject requestParams = new JSONObject();
-        requestParams.put("createdDate", createdDate);
+        requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("email", user.getEmail());
-        requestParams.put("idReset", 0);
-        requestParams.put("password", user.getPassword());
-        requestParams.put("tokenReset", "");
         postRequest(requestParams, "/api/auth/forgot-password");
     }
 

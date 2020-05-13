@@ -9,7 +9,7 @@
     <test name="Login Menu Test">
         <classes>
             <class name="com.g2academy.testcases.loginmenu.TC_Login" />
-            <class name="com.g2academy.testcases.loginmenu.TC_Register" />
+<!--            <class name="com.g2academy.testcases.loginmenu.TC_Register" />-->
             <class name="com.g2academy.testcases.loginmenu.TC_ForgotPassword" />
         </classes>
     </test>
@@ -21,10 +21,6 @@
     </test>
     <test name="Profile Menu Test">
         <classes>
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeFullName" />
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeEmail" />
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePhoneNumber" />
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />
         </classes>
     </test>
 </suite>
