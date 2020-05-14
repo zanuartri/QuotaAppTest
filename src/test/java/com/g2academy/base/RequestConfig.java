@@ -14,6 +14,12 @@ public class RequestConfig extends TestConfig {
         setResponse(getHttpRequest().request(Method.POST, path));
     }
 
+    public void putRequest(JSONObject requestParams, String path) {
+        getHttpRequest().header("Content-Type", "application/json");
+        getHttpRequest().body(requestParams.toJSONString());
+        setResponse(getHttpRequest().request(Method.PUT, path));
+    }
+
     public String getResponseBody() {
         return (String) getResponse().getBody().asString();
     }

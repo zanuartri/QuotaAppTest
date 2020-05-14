@@ -42,7 +42,7 @@ public class TestConfig {
 	public void setup() {
 		logger = Logger.getLogger("QuotaAppRestAPI");
 		PropertyConfigurator.configure("Log4j.properties");
-		RestAssured.baseURI = "https://testing-connection-coba.herokuapp.com";
+		RestAssured.baseURI = "https://project-danapprentech-3.herokuapp.com";
 		httpRequest = RestAssured.given();
 	}
 

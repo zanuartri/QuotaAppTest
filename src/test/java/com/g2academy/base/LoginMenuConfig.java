@@ -22,13 +22,14 @@ public class LoginMenuConfig extends RequestConfig {
         postRequest(requestParams, "/api/auth/signout");
     }
 
-    public void register(User user, String confirmPassword) {
+    public void register(User user) {
         JSONObject requestParams = new JSONObject();
         requestParams.put("email", user.getEmail());
         requestParams.put("namaUser", user.getFullname());
         requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("password", user.getPassword());
-        requestParams.put("confirmPassword", confirmPassword);
+        requestParams.put("confirmPassword", user.getConfirmPassword());
+        requestParams.put("pinTransaksi", user.getPinTransaction());
         postRequest(requestParams, "/api/auth/signup");
     }
 
@@ -39,29 +40,21 @@ public class LoginMenuConfig extends RequestConfig {
         postRequest(requestParams, "/api/auth/forgot-password");
     }
 
-    public void setOtpAndToken(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) throws InterruptedException {
+    public void setOtpAndToken(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
         OTPCode otp = new OTPCode();
         TokenEmail tokenEmail = new TokenEmail();
 
         switch (verificationMethod) {
             case "OTP":
                 String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) {
-                    generatedOtpCode = "0657";
-                    Thread.sleep(100);
-                } else {
-                    generatedOtpCode = otpCode;
-                }
+                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode();
+                else generatedOtpCode = otpCode;
                 otp.sendCode(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
                 break;
             case "TOKEN":
                 String generatedToken = "";
-                if (token.equals("TRUE")) {
-                    generatedToken = tokenEmail.getToken();
-                    Thread.sleep(100);
-                } else {
-                    generatedToken = token;
-                }
+                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
+                else generatedToken = token;
                 tokenEmail.sendToken(generatedToken);
                 break;
             default:

@@ -9,18 +9,28 @@
     <test name="Login Menu Test">
         <classes>
             <class name="com.g2academy.testcases.loginmenu.TC_Login" />
-<!--            <class name="com.g2academy.testcases.loginmenu.TC_Register" />-->
+            <class name="com.g2academy.testcases.loginmenu.TC_Register" />
             <class name="com.g2academy.testcases.loginmenu.TC_ForgotPassword" />
         </classes>
     </test>
     <test name="Home Menu Test">
-
+        <classes>
+            <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataList" />
+            <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataList" />
+        </classes>
     </test>
     <test name="History Menu Test">
-
+        <classes>
+            <class name="com.g2academy.testcases.mainmenu.history.TC_PaketDataHistory" />
+        </classes>
     </test>
     <test name="Profile Menu Test">
         <classes>
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeFullName" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeEmail" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePhoneNumber" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_Logout" />
         </classes>
     </test>
 </suite>

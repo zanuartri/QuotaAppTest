@@ -6,6 +6,9 @@ public class User {
     private String email;
     private String phonenumber;
     private String password;
+    private String confirmPassword;
+    private String pinTransaction;
+    private String virtualAccount;
     private String saldo;
 
     public Long getId() {
@@ -46,6 +49,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getPinTransaction() {
+        return pinTransaction;
+    }
+
+    public void setPinTransaction(String pinTransaction) {
+        this.pinTransaction = pinTransaction;
+    }
+
+    public String getVirtualAccount() {
+        return virtualAccount;
+    }
+
+    public void setVirtualAccount(String virtualAccount) {
+        this.virtualAccount = virtualAccount;
     }
 
     public String getSaldo() {

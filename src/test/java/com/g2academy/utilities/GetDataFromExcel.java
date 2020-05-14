@@ -1,20 +1,16 @@
 package com.g2academy.utilities;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class GetDataFromExcel {
 	private FileInputStream fin;
-	private FileOutputStream fout;
 	private XSSFWorkbook workbook;
 	private XSSFSheet sheet;
 	private XSSFRow row;
@@ -60,22 +56,6 @@ public class GetDataFromExcel {
 		workbook.close();
 		fin.close();
 		return data;
-	}
-
-	private void setCellData(String fileName, String sheetName, int rowNumber, int columnNumber, String data) throws IOException {
-		fin = new FileInputStream(fileName);
-		workbook = new XSSFWorkbook(fin);
-		sheet = workbook.getSheet(sheetName);
-		row = sheet.getRow(rowNumber);
-		cell = row.getCell(columnNumber);
-
-		cell.setCellValue(data);
-		fout = new FileOutputStream(fileName);
-		workbook.write(fout);
-
-		workbook.close();
-		fin.close();
-		fout.close();
 	}
 
 	public Object[][] getDataExcel(String path, String sheetName) throws IOException {
