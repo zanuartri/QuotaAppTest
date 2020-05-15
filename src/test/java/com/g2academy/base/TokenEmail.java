@@ -6,7 +6,11 @@ public class TokenEmail extends RequestConfig {
         return getResponseBody();
     }
 
-    public void sendToken(String token) {
+    public void sendTokenRegister(String token) {
+        getRequest("/api/auth/confirmation-account/" + token);
+    }
+
+    public void sendTokenForgotPassword(String token) {
         getRequest("/api/auth/confirmation-account/" + token);
     }
 }

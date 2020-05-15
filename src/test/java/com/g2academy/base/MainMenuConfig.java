@@ -46,24 +46,24 @@ public class MainMenuConfig extends RequestConfig {
         switch (verificationMethod) {
             case "OTP":
                 String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode();
+                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
                 else generatedOtpCode = otpCode;
-                otp.sendCode(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
+                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
                 break;
             case "TOKEN":
                 String generatedToken = "";
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
                 else generatedToken = token;
-                tokenEmail.sendToken(generatedToken);
+                tokenEmail.sendTokenRegister(generatedToken);
                 break;
             default:
                 break;
         }
     }
 
-    public void getPaketDataList(User user) {
+    public void getPaketDataList(String phoneNumber) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("nomer_hp", user.getPhonenumber());
+        requestParams.put("nomer_hp", phoneNumber);
         postRequest(requestParams, "/api/provider/cek-paket");
     }
 
@@ -75,6 +75,10 @@ public class MainMenuConfig extends RequestConfig {
         requestParams.put("harga", price);
         requestParams.put("paket_data", paketData);
         postRequest(requestParams, "/api/transaksi/choice");
+    }
+
+    public void getPaketDataHistory(String phoneNumber) {
+        getRequest("/api/transaksi/history/" + phoneNumber);
     }
 
     public void payWithQWallet(User user) {
@@ -89,6 +93,10 @@ public class MainMenuConfig extends RequestConfig {
         requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("virtualAccount", user.getVirtualAccount());
         postRequest(requestParams, "/api/transaksi/E-wallet");
+    }
+
+    public void uploadBuktiPembayaran(String path) {
+        uploadImage(path, "/api/transaksi-upload-photo/buktipembayaran");
     }
 
     public Object[][] getDataProfileMenu(String sheetName) throws IOException {

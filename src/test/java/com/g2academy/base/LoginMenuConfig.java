@@ -22,6 +22,10 @@ public class LoginMenuConfig extends RequestConfig {
         postRequest(requestParams, "/api/auth/signout");
     }
 
+    public void deleteAcount(String phoneNumber) {
+        deleteRequest("api/auth/delete-user/" + phoneNumber);
+    }
+
     public void register(User user) {
         JSONObject requestParams = new JSONObject();
         requestParams.put("email", user.getEmail());
@@ -40,22 +44,44 @@ public class LoginMenuConfig extends RequestConfig {
         postRequest(requestParams, "/api/auth/forgot-password");
     }
 
-    public void setOtpAndToken(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
+    public void setOtpAndTokenRegister(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
         OTPCode otp = new OTPCode();
         TokenEmail tokenEmail = new TokenEmail();
 
         switch (verificationMethod) {
             case "OTP":
                 String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode();
+                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
                 else generatedOtpCode = otpCode;
-                otp.sendCode(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
+                otp.sendCodeRegister(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
                 break;
             case "TOKEN":
                 String generatedToken = "";
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
                 else generatedToken = token;
-                tokenEmail.sendToken(generatedToken);
+                tokenEmail.sendTokenRegister(generatedToken);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setOtpAndTokenForgotPassword(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
+        OTPCode otp = new OTPCode();
+        TokenEmail tokenEmail = new TokenEmail();
+
+        switch (verificationMethod) {
+            case "OTP":
+                String generatedOtpCode = "";
+                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
+                else generatedOtpCode = otpCode;
+                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
+                break;
+            case "TOKEN":
+                String generatedToken = "";
+                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
+                else generatedToken = token;
+                tokenEmail.sendTokenRegister(generatedToken);
                 break;
             default:
                 break;

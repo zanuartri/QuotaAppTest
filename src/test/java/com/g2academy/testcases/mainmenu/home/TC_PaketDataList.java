@@ -2,14 +2,12 @@ package com.g2academy.testcases.mainmenu.home;
 
 import com.g2academy.base.Assertion;
 import com.g2academy.base.MainMenuConfig;
-import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 public class TC_PaketDataList extends MainMenuConfig {
-    private User user = new User();
     private Assertion assertion = new Assertion();
     private String[][] result = new String[50][5];
     private int testCaseIndex;
@@ -42,8 +40,7 @@ public class TC_PaketDataList extends MainMenuConfig {
         result[testCaseIndex][3] = responseBodyRequest;
         result[testCaseIndex][4] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
-        getPaketDataList(user);
+        getPaketDataList(phoneNumber);
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
         result[testCaseIndex][4] = "SUCCESS";
@@ -57,6 +54,6 @@ public class TC_PaketDataList extends MainMenuConfig {
     @AfterClass
     public void afterClass() throws IOException {
         SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Paket Data Purchase");
+        excel.writeExcel(result, "Paket Data List");
     }
 }

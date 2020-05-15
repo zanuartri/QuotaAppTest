@@ -86,9 +86,10 @@ public class TC_Register extends LoginMenuConfig {
         assertion.responseBodyContains(responseBodyRequest);
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndToken(user, verificationMethod, otpCode, statusOtpCode, token);
+            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, token);
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
+            deleteAcount(user.getPhonenumber());
         }
 
         result[testCaseIndex][15] = "SUCCESS";

@@ -70,7 +70,7 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         assertion.responseBodyContains(responseBodyRequest);
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndToken(user, verificationMethod, otpCode, statusOtpCode, token);
+            setOtpAndTokenForgotPassword(user, verificationMethod, otpCode, statusOtpCode, token);
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
         }
