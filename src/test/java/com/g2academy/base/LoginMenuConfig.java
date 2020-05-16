@@ -23,7 +23,7 @@ public class LoginMenuConfig extends RequestConfig {
     }
 
     public void deleteAcount(String phoneNumber) {
-        deleteRequest("api/auth/delete-user/" + phoneNumber);
+        deleteRequest("/api/auth/delete-user/" + phoneNumber);
     }
 
     public void register(User user) {
@@ -57,29 +57,7 @@ public class LoginMenuConfig extends RequestConfig {
                 break;
             case "TOKEN":
                 String generatedToken = "";
-                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
-                else generatedToken = token;
-                tokenEmail.sendTokenRegister(generatedToken);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void setOtpAndTokenForgotPassword(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
-        OTPCode otp = new OTPCode();
-        TokenEmail tokenEmail = new TokenEmail();
-
-        switch (verificationMethod) {
-            case "OTP":
-                String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
-                else generatedOtpCode = otpCode;
-                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
-                break;
-            case "TOKEN":
-                String generatedToken = "";
-                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
+                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
                 else generatedToken = token;
                 tokenEmail.sendTokenRegister(generatedToken);
                 break;

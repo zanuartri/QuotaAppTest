@@ -1,34 +1,34 @@
-package com.g2academy.testcases.mainmenu.history;
+package com.g2academy.testcases.mainmenu.profile;
 
-import com.g2academy.base.Assertion;
-import com.g2academy.base.LoginMenuConfig;
-import com.g2academy.base.MainMenuConfig;
+import com.g2academy.base.*;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_PaketDataHistory extends MainMenuConfig {
+public class TC_EditUser extends MainMenuConfig {
     private User user = new User();
     private Assertion assertion = new Assertion();
-    private String[][] result = new String[50][5];
+    private String[][] result = new String[100][16];
     private int testCaseIndex;
     private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
 
-    @DataProvider(name="paketDataHistory")
+    @DataProvider(name="dataEditUser")
     Object[][] getDataFromExcel() throws IOException {
-        return getDataPurchase("Paket Data History");
+        return getDataProfileMenu("Edit User");
     }
 
     @BeforeClass
     public void beforeClass() {
         testCaseIndex = 1;
         result[0][0] = "description";
-        result[0][1] = "phone number";
-        result[0][2] = "statusCodeRequest";
-        result[0][3] = "responseBodyRequest";
-        result[0][4] = "status";
+        result[0][1] = "fullName";
+        result[0][2] = "phoneNumber";
+        result[0][3] = "email";
+        result[0][4] = "statusCodeRequest";
+        result[0][5] = "responseBodyRequest";
+        result[0][6] = "status";
 
         user.setFullname("Zanuar Tri Romadon");
         user.setEmail("triromadon@gmail.com");
@@ -36,28 +36,36 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
+        loginMenuConfig.deleteAcount(user.getPhonenumber());
         loginMenuConfig.register(user);
         loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
         loginMenuConfig.login(user);
     }
 
-    @Test(dataProvider = "paketDataHistory")
-    public void testPaketDataHistory(
+    @Test(dataProvider = "dataEditUser")
+    public void testEditUser(
             String description,
+            String fullname,
+            String email,
             String phoneNumber,
             String statusCodeRequest,
             String responseBodyRequest
     ) {
         result[testCaseIndex][0] = description;
-        result[testCaseIndex][1] = phoneNumber;
-        result[testCaseIndex][2] = statusCodeRequest;
-        result[testCaseIndex][3] = responseBodyRequest;
-        result[testCaseIndex][4] = "FAILED";
+        result[testCaseIndex][1] = fullname;
+        result[testCaseIndex][2] = phoneNumber;
+        result[testCaseIndex][3] = email;
+        result[testCaseIndex][4] = statusCodeRequest;
+        result[testCaseIndex][5] = responseBodyRequest;
+        result[testCaseIndex][6] = "FAILED";
 
-        getPaketDataHistory(phoneNumber);
+        user.setFullname(fullname);
+        user.setEmail(email);
+        user.setPhonenumber(phoneNumber);
+        editUser(user);
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
-        result[testCaseIndex][4] = "SUCCESS";
+        result[testCaseIndex][6] = "SUCCESS";
     }
 
     @AfterMethod
@@ -69,6 +77,6 @@ public class TC_PaketDataHistory extends MainMenuConfig {
     public void afterClass() throws IOException {
         loginMenuConfig.deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Paket Data History");
+        excel.writeExcel(result, "Edit User");
     }
 }

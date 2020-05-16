@@ -38,6 +38,8 @@ public class TC_Register extends LoginMenuConfig {
         result[0][13] = "statusCodeConfirmation";
         result[0][14] = "responseBodyConfirmation";
         result[0][15] = "status";
+
+        deleteAcount("+6281252930398");
     }
 
     @Test(dataProvider = "dataRegister", timeOut = 15000)
@@ -86,7 +88,7 @@ public class TC_Register extends LoginMenuConfig {
         assertion.responseBodyContains(responseBodyRequest);
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, token);
+            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, "TRUE");
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
             deleteAcount(user.getPhonenumber());
@@ -97,6 +99,7 @@ public class TC_Register extends LoginMenuConfig {
 
     @AfterMethod
     public void afterMethod() {
+        deleteAcount(user.getPhonenumber());
         testCaseIndex++;
     }
 

@@ -1,7 +1,6 @@
 package com.g2academy.testcases.loginmenu;
 
-import com.g2academy.base.Assertion;
-import com.g2academy.base.LoginMenuConfig;
+import com.g2academy.base.*;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.annotations.*;
@@ -11,7 +10,7 @@ import java.io.IOException;
 public class TC_ForgotPassword extends LoginMenuConfig {
     private User user = new User();
     private Assertion assertion = new Assertion();
-    private String[][] result = new String[100][12];
+    private String[][] result = new String[100][16];
     private int testCaseIndex;
 
     @DataProvider(name = "dataForgotPassword")
@@ -33,7 +32,21 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[0][8] = "token";
         result[0][9] = "statusCodeConfirmation";
         result[0][10] = "responseBodyConfirmation";
-        result[0][11] = "status";
+        result[0][11] = "newPassword";
+        result[0][12] = "confirmNewPassword";
+        result[0][13] = "statusCodeNewPassword";
+        result[0][14] = "responseBodyNewPassword";
+        result[0][15] = "status";
+
+        user.setFullname("Zanuar Tri Romadon");
+        user.setEmail("triromadon@gmail.com");
+        user.setPhonenumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        deleteAcount(user.getPhonenumber());
+        register(user);
+        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
     }
 
     @Test(dataProvider = "dataForgotPassword", timeOut = 15000)
@@ -48,7 +61,11 @@ public class TC_ForgotPassword extends LoginMenuConfig {
             String statusOtpCode,
             String token,
             String statusCodeConfirmation,
-            String responseBodyConfirmation
+            String responseBodyConfirmation,
+            String newPassword,
+            String confirmNewPassword,
+            String statusCodeNewPassword,
+            String responseBodyNewPassword
     ) {
         result[testCaseIndex][0] = description;
         result[testCaseIndex][1] = phoneNumber;
@@ -61,7 +78,11 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[testCaseIndex][8] = token;
         result[testCaseIndex][9] = statusCodeConfirmation;
         result[testCaseIndex][10] = responseBodyConfirmation;
-        result[testCaseIndex][11] = "FAILED";
+        result[testCaseIndex][11] = newPassword;
+        result[testCaseIndex][12] = confirmNewPassword;
+        result[testCaseIndex][13] = statusCodeNewPassword;
+        result[testCaseIndex][14] = responseBodyNewPassword;
+        result[testCaseIndex][15] = "FAILED";
 
         user.setPhonenumber(phoneNumber);
         user.setEmail(email);
@@ -70,12 +91,34 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         assertion.responseBodyContains(responseBodyRequest);
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndTokenForgotPassword(user, verificationMethod, otpCode, statusOtpCode, token);
-            assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-            assertion.responseBodyContains(responseBodyConfirmation);
+            OTPCode otp = new OTPCode();
+            TokenEmail tokenEmail = new TokenEmail();
+
+            if (verificationMethod.equals("OTP")) {
+                String generatedOTP = "";
+                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhonenumber());
+                else generatedOTP = otpCode;
+                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
+                assertion.responseBodyContains(responseBodyNewPassword);
+            } else {
+                String generatedToken = "";
+                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
+                else generatedToken = token;
+                tokenEmail.sendTokenForgotPassword(generatedToken);
+                assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
+                assertion.responseBodyContains(responseBodyConfirmation);
+
+                if (token.equals("TRUE")) {
+                    MainMenuConfig mainMenuConfig = new MainMenuConfig();
+                    mainMenuConfig.changePassword(user, newPassword, confirmNewPassword);
+                    assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
+                    assertion.responseBodyContains(responseBodyNewPassword);
+                }
+            }
         }
 
-        result[testCaseIndex][11] = "SUCCESS";
+        result[testCaseIndex][15] = "SUCCESS";
     }
 
     @AfterMethod
@@ -85,6 +128,7 @@ public class TC_ForgotPassword extends LoginMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
+        deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Forgot Password");
     }

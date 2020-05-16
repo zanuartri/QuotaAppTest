@@ -1,32 +1,134 @@
 package com.g2academy.testcases.mainmenu.profile;
 
-import com.g2academy.base.MainMenuConfig;
+import com.g2academy.base.*;
 import com.g2academy.model.User;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import com.g2academy.utilities.SetDataToExcel;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 
 public class TC_ChangePassword extends MainMenuConfig {
     private User user = new User();
+    private Assertion assertion = new Assertion();
+    private String[][] result = new String[100][16];
+    private int testCaseIndex;
+    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
 
     @DataProvider(name="dataChangePassword")
     Object[][] getDataFromExcel() throws IOException {
         return getDataProfileMenu("Change Password");
     }
 
+    @BeforeClass
+    public void beforeClass() {
+        testCaseIndex = 1;
+        result[0][0] = "description";
+        result[0][1] = "phoneNumber";
+        result[0][2] = "email";
+        result[0][3] = "statusCodeRequest";
+        result[0][4] = "responseBodyRequest";
+        result[0][5] = "verificationMethod";
+        result[0][6] = "otpCode";
+        result[0][7] = "statusOtpCode";
+        result[0][8] = "token";
+        result[0][9] = "statusCodeConfirmation";
+        result[0][10] = "responseBodyConfirmation";
+        result[0][11] = "newPassword";
+        result[0][12] = "confirmNewPassword";
+        result[0][13] = "statusCodeNewPassword";
+        result[0][14] = "responseBodyNewPassword";
+        result[0][15] = "status";
+
+        user.setFullname("Zanuar Tri Romadon");
+        user.setEmail("triromadon@gmail.com");
+        user.setPhonenumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        loginMenuConfig.deleteAcount(user.getPhonenumber());
+        loginMenuConfig.register(user);
+        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        loginMenuConfig.login(user);
+    }
+
     @Test(dataProvider = "dataChangePassword")
     public void testChangePassword(
             String description,
-            String phonenumber,
-            String password,
-            String newpassword,
-            String otpcode,
-            String statuscode,
-            String responsebody
-    ) throws InterruptedException {
-        user.setPhonenumber(phonenumber);
-        user.setPassword(password);
-        changePassword(user, newpassword);
+            String phoneNumber,
+            String email,
+            String statusCodeRequest,
+            String responseBodyRequest,
+            String verificationMethod,
+            String otpCode,
+            String statusOtpCode,
+            String token,
+            String statusCodeConfirmation,
+            String responseBodyConfirmation,
+            String newPassword,
+            String confirmNewPassword,
+            String statusCodeNewPassword,
+            String responseBodyNewPassword
+    ) {
+        result[testCaseIndex][0] = description;
+        result[testCaseIndex][1] = phoneNumber;
+        result[testCaseIndex][2] = email;
+        result[testCaseIndex][3] = statusCodeRequest;
+        result[testCaseIndex][4] = responseBodyRequest;
+        result[testCaseIndex][5] = verificationMethod;
+        result[testCaseIndex][6] = otpCode;
+        result[testCaseIndex][7] = statusOtpCode;
+        result[testCaseIndex][8] = token;
+        result[testCaseIndex][9] = statusCodeConfirmation;
+        result[testCaseIndex][10] = responseBodyConfirmation;
+        result[testCaseIndex][11] = newPassword;
+        result[testCaseIndex][12] = confirmNewPassword;
+        result[testCaseIndex][13] = statusCodeNewPassword;
+        result[testCaseIndex][14] = responseBodyNewPassword;
+        result[testCaseIndex][15] = "FAILED";
+
+        user.setPhonenumber(phoneNumber);
+        user.setEmail(email);
+        resetPassword(user);
+
+        if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
+            OTPCode otp = new OTPCode();
+            TokenEmail tokenEmail = new TokenEmail();
+
+            if (verificationMethod.equals("OTP")) {
+                String generatedOTP = "";
+                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhonenumber());
+                else generatedOTP = otpCode;
+                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
+                assertion.responseBodyContains(responseBodyNewPassword);
+            } else {
+                String generatedToken = "";
+                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
+                else generatedToken = token;
+                tokenEmail.sendTokenForgotPassword(generatedToken);
+                assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
+                assertion.responseBodyContains(responseBodyConfirmation);
+
+                if (token.equals("TRUE")) {
+                    changePassword(user, newPassword, confirmNewPassword);
+                    assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
+                    assertion.responseBodyContains(responseBodyNewPassword);
+                }
+            }
+        }
+
+        result[testCaseIndex][15] = "SUCCESS";
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        testCaseIndex++;
+    }
+
+    @AfterClass
+    public void afterClass() throws IOException {
+        loginMenuConfig.deleteAcount("+6281252930398");
+        SetDataToExcel excel = new SetDataToExcel();
+        excel.writeExcel(result, "Change Password");
     }
 }

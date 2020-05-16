@@ -16,10 +16,12 @@ public class OTPCode extends RequestConfig {
         postRequest(requestParams, "/api/auth/confirmation-otp/" + phoneNumber + "/otp");
     }
 
-    public void sendCodeForgotPassword(String phoneNumber, String otpCode, String statusOtpCode) {
+    public void sendCodeForgotPassword(String phoneNumber, String otpCode, String statusOtpCode, String newPassword, String confirmPassword) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("codeOtp", otpCode);
+        requestParams.put("otp", otpCode);
         requestParams.put("statusOtp", statusOtpCode);
-        postRequest(requestParams, "/api/auth/confirmation-forgotPassword/" + phoneNumber + "/otp");
+        requestParams.put("newPassword", newPassword);
+        requestParams.put("confirmPassword", confirmPassword);
+        putRequest(requestParams, "/api/auth/confirmation-forgotPassword/" + phoneNumber + "/otp");
     }
 }

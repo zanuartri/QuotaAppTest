@@ -8,58 +8,50 @@ import java.io.IOException;
 
 @SuppressWarnings("unchecked")
 public class MainMenuConfig extends RequestConfig {
-    public void changeFullName(User user) {
+    public void editUser(User user) {
         JSONObject requestParams = new JSONObject();
         requestParams.put("namauser", user.getFullname());
-        requestParams.put("username", user.getPhonenumber());
-        requestParams.put("password", user.getPassword());
-        postRequest(requestParams, "/changefullname");
+        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("email", user.getEmail());
+        putRequest(requestParams, "/api/auth/edit-user/" + user.getPhonenumber());
     }
 
-    public void changeEmail(User user) {
+    public void resetPassword(User user) {
         JSONObject requestParams = new JSONObject();
         requestParams.put("email", user.getEmail());
-        requestParams.put("username", user.getPhonenumber());
-        requestParams.put("password", user.getPassword());
-        postRequest(requestParams, "/changeemail");
+        requestParams.put("noTelepon", user.getPhonenumber());
+        postRequest(requestParams, "/api/auth/reset-password-inapplication");
     }
 
-    public void changePhoneNumber(User user) {
+    public void changePassword(User user, String newPassword, String confirmPassword) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("username", user.getPhonenumber());
-        requestParams.put("password", user.getPassword());
-        postRequest(requestParams, "/changephonenumber");
+        requestParams.put("email", user.getEmail());
+        requestParams.put("newPassword", newPassword);
+        requestParams.put("confirmPassword", confirmPassword);
+        putRequest(requestParams, "/api/auth/change-password");
     }
 
-    public void changePassword(User user, String newPassword) {
-        JSONObject requestParams = new JSONObject();
-        requestParams.put("username", user.getPhonenumber());
-        requestParams.put("password", user.getPassword());
-        requestParams.put("newpassword", newPassword);
-        postRequest(requestParams, "/changepassword");
-    }
-
-    public void setOtpAndToken(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
-        OTPCode otp = new OTPCode();
-        TokenEmail tokenEmail = new TokenEmail();
-
-        switch (verificationMethod) {
-            case "OTP":
-                String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
-                else generatedOtpCode = otpCode;
-                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
-                break;
-            case "TOKEN":
-                String generatedToken = "";
-                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken();
-                else generatedToken = token;
-                tokenEmail.sendTokenRegister(generatedToken);
-                break;
-            default:
-                break;
-        }
-    }
+//    public void setOtpAndToken(User user, String verificationMethod, String otpCode, String statusOtpCode, String token) {
+//        OTPCode otp = new OTPCode();
+//        TokenEmail tokenEmail = new TokenEmail();
+//
+//        switch (verificationMethod) {
+//            case "OTP":
+//                String generatedOtpCode = "";
+//                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
+//                else generatedOtpCode = otpCode;
+////                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
+//                break;
+//            case "TOKEN":
+//                String generatedToken = "";
+//                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
+//                else generatedToken = token;
+//                tokenEmail.sendTokenRegister(generatedToken);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     public void getPaketDataList(String phoneNumber) {
         JSONObject requestParams = new JSONObject();
@@ -71,9 +63,9 @@ public class MainMenuConfig extends RequestConfig {
         JSONObject requestParams = new JSONObject();
         requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("nomorPaketData", nomorPaketData);
-        requestParams.put("nama_provider", provider);
+        requestParams.put("namaProvider", provider);
         requestParams.put("harga", price);
-        requestParams.put("paket_data", paketData);
+        requestParams.put("paketData", paketData);
         postRequest(requestParams, "/api/transaksi/choice");
     }
 
@@ -92,10 +84,10 @@ public class MainMenuConfig extends RequestConfig {
         JSONObject requestParams = new JSONObject();
         requestParams.put("noTelepon", user.getPhonenumber());
         requestParams.put("virtualAccount", user.getVirtualAccount());
-        postRequest(requestParams, "/api/transaksi/E-wallet");
+        postRequest(requestParams, "/api/transaksi/virtual-account");
     }
 
-    public void uploadBuktiPembayaran(String path) {
+    public void uploadInvoice(String path) {
         uploadImage(path, "/api/transaksi-upload-photo/buktipembayaran");
     }
 

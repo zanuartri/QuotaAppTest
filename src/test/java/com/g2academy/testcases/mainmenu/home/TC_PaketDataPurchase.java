@@ -1,6 +1,7 @@
 package com.g2academy.testcases.mainmenu.home;
 
 import com.g2academy.base.Assertion;
+import com.g2academy.base.LoginMenuConfig;
 import com.g2academy.base.MainMenuConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
@@ -13,6 +14,7 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
     private Assertion assertion = new Assertion();
     private String[][] result = new String[200][18];
     private int testCaseIndex;
+    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
 
     @DataProvider(name="paketDataPurchase")
     Object[][] getDataFromExcel() throws IOException {
@@ -40,6 +42,16 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[0][15] = "statusCodeInvoice";
         result[0][16] = "responseBodyInvoice";
         result[0][17] = "status";
+
+        user.setFullname("Zanuar Tri Romadon");
+        user.setEmail("triromadon@gmail.com");
+        user.setPhonenumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        loginMenuConfig.register(user);
+        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        loginMenuConfig.login(user);
     }
 
     @Test(dataProvider = "paketDataPurchase")
@@ -85,20 +97,24 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         user.setPinTransaction(pinTransaction);
         user.setVirtualAccount(virtualAccount);
         purchasePaketData(user, phoneNumberForPaketData, provider, price, paketData);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
 
         if (paymentMethod.equals("QWALLET")) {
             payWithQWallet(user);
+            System.out.println(getResponse().getBody().asString());
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
         } else if (paymentMethod.equals("VA")) {
             payWithVirtualAccount(user);
+            System.out.println(getResponse().getBody().asString());
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
 
             if (!imageName.equals("-")) {
-                uploadBuktiPembayaran("resources/image/DANA.jpg");
+                uploadInvoice("resources/image/DANA.jpg");
+                System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeInvoice));
                 assertion.responseBodyContains(responseBodyInvoice);
             }
@@ -114,6 +130,7 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
+        loginMenuConfig.deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data Purchase");
     }

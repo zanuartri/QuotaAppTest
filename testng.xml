@@ -26,7 +26,7 @@
     </test>
     <test name="Profile Menu Test">
         <classes>
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeFullName" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_EditUser" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeEmail" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePhoneNumber" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />

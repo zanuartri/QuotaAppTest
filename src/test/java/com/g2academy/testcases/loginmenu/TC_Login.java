@@ -28,6 +28,16 @@ public class TC_Login extends LoginMenuConfig {
         result[0][3] = "statusCodeRequest";
         result[0][4] = "responseBodyRequest";
         result[0][5] = "status";
+
+        user.setFullname("Zanuar Tri Romadon");
+        user.setEmail("triromadon@gmail.com");
+        user.setPhonenumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        deleteAcount(user.getPhonenumber());
+        register(user);
+        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
     }
 
     @Test(dataProvider = "dataLogin", timeOut = 15000)
@@ -47,6 +57,7 @@ public class TC_Login extends LoginMenuConfig {
 
         user.setPhonenumber(phoneNumber);
         user.setPassword(password);
+        logout(user);
         login(user);
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
@@ -55,14 +66,13 @@ public class TC_Login extends LoginMenuConfig {
 
     @AfterMethod
     public void afterMethod() {
-        user.setPhonenumber("+6281252930398");
-        user.setPassword("Zanuar30@@");
         logout(user);
         testCaseIndex++;
     }
 
     @AfterClass
     public void afterClass() throws IOException {
+        deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Login");
     }
