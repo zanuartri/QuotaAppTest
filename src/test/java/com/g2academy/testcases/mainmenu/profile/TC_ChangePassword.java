@@ -38,20 +38,27 @@ public class TC_ChangePassword extends MainMenuConfig {
         result[0][13] = "statusCodeNewPassword";
         result[0][14] = "responseBodyNewPassword";
         result[0][15] = "status";
+    }
 
-        user.setFullname("Zanuar Tri Romadon");
+    @BeforeMethod
+    public void beforeMethod() {
+        user.setFullName("Zanuar Tri Romadon");
         user.setEmail("triromadon@gmail.com");
-        user.setPhonenumber("+6281252930398");
+        user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenuConfig.deleteAcount(user.getPhonenumber());
+        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.register(user);
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        System.out.println(getResponse().getBody().asString());
+        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.login(user);
+        System.out.println(getResponse().getBody().asString());
     }
 
-    @Test(dataProvider = "dataChangePassword")
+    @Test(dataProvider = "dataChangePassword", timeOut = 30000)
     public void testChangePassword(
             String description,
             String phoneNumber,
@@ -86,9 +93,10 @@ public class TC_ChangePassword extends MainMenuConfig {
         result[testCaseIndex][14] = responseBodyNewPassword;
         result[testCaseIndex][15] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setEmail(email);
         resetPassword(user);
+        System.out.println(getResponse().getBody().asString());
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
             OTPCode otp = new OTPCode();
@@ -96,9 +104,10 @@ public class TC_ChangePassword extends MainMenuConfig {
 
             if (verificationMethod.equals("OTP")) {
                 String generatedOTP = "";
-                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhonenumber());
+                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
                 else generatedOTP = otpCode;
-                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                otp.sendCodeForgotPassword(user.getPhoneNumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                 assertion.responseBodyContains(responseBodyNewPassword);
             } else {
@@ -106,28 +115,33 @@ public class TC_ChangePassword extends MainMenuConfig {
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
                 else generatedToken = token;
                 tokenEmail.sendTokenForgotPassword(generatedToken);
+                System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
                 assertion.responseBodyContains(responseBodyConfirmation);
 
                 if (token.equals("TRUE")) {
                     changePassword(user, newPassword, confirmNewPassword);
+                    System.out.println(getResponse().getBody().asString());
                     assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                     assertion.responseBodyContains(responseBodyNewPassword);
                 }
             }
         }
 
+        loginMenuConfig.deleteAcount(phoneNumber);
+        System.out.println(getResponse().getBody().asString());
         result[testCaseIndex][15] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
+        loginMenuConfig.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Change Password");
     }

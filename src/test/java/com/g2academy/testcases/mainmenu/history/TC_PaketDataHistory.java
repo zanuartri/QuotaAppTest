@@ -30,18 +30,18 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[0][3] = "responseBodyRequest";
         result[0][4] = "status";
 
-        user.setFullname("Zanuar Tri Romadon");
+        user.setFullName("Zanuar Tri Romadon");
         user.setEmail("triromadon@gmail.com");
-        user.setPhonenumber("+6281252930398");
+        user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
         loginMenuConfig.register(user);
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
         loginMenuConfig.login(user);
     }
 
-    @Test(dataProvider = "paketDataHistory")
+    @Test(dataProvider = "paketDataHistory", timeOut = 30000)
     public void testPaketDataHistory(
             String description,
             String phoneNumber,

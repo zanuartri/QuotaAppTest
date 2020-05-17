@@ -27,7 +27,7 @@ public class TC_PaketDataList extends MainMenuConfig {
         result[0][4] = "status";
     }
 
-    @Test(dataProvider = "paketDataList")
+    @Test(dataProvider = "paketDataList", timeOut = 30000)
     public void testPaketDataList(
             String description,
             String phoneNumber,
@@ -41,6 +41,7 @@ public class TC_PaketDataList extends MainMenuConfig {
         result[testCaseIndex][4] = "FAILED";
 
         getPaketDataList(phoneNumber);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
         result[testCaseIndex][4] = "SUCCESS";

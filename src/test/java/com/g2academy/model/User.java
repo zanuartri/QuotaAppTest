@@ -2,9 +2,9 @@ package com.g2academy.model;
 
 public class User {
     private Long id;
-    private String fullname;
+    private String fullName;
     private String email;
-    private String phonenumber;
+    private String phoneNumber;
     private String password;
     private String confirmPassword;
     private String pinTransaction;
@@ -19,12 +19,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -35,12 +35,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {

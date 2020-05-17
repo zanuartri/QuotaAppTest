@@ -29,18 +29,21 @@ public class TC_Login extends LoginMenuConfig {
         result[0][4] = "responseBodyRequest";
         result[0][5] = "status";
 
-        user.setFullname("Zanuar Tri Romadon");
-        user.setEmail("triromadon@gmail.com");
-        user.setPhonenumber("+6281252930398");
+        user.setFullName("Zanuar Tri Romadon");
+        user.setEmail("testlogin@gmail.com");
+        user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        deleteAcount(user.getPhonenumber());
+        deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
         register(user);
-        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        System.out.println(getResponse().getBody().asString());
+        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
     }
 
-    @Test(dataProvider = "dataLogin", timeOut = 15000)
+    @Test(dataProvider = "dataLogin", timeOut = 30000)
     public void testLogin(
             String description,
             String phoneNumber,
@@ -55,10 +58,12 @@ public class TC_Login extends LoginMenuConfig {
         result[testCaseIndex][4] = responseBodyRequest;
         result[testCaseIndex][5] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
         logout(user);
+        System.out.println(getResponse().getBody().asString());
         login(user);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
         result[testCaseIndex][5] = "SUCCESS";
@@ -67,12 +72,14 @@ public class TC_Login extends LoginMenuConfig {
     @AfterMethod
     public void afterMethod() {
         logout(user);
+        System.out.println(getResponse().getBody().asString());
         testCaseIndex++;
     }
 
     @AfterClass
     public void afterClass() throws IOException {
         deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Login");
     }

@@ -16,7 +16,7 @@
     <test name="Home Menu Test">
         <classes>
             <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataList" />
-            <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataList" />
+            <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataPurchase" />
         </classes>
     </test>
     <test name="History Menu Test">
@@ -27,8 +27,6 @@
     <test name="Profile Menu Test">
         <classes>
             <class name="com.g2academy.testcases.mainmenu.profile.TC_EditUser" />
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangeEmail" />
-            <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePhoneNumber" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_Logout" />
         </classes>

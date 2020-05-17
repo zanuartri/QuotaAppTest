@@ -30,16 +30,30 @@ public class TC_Logout extends MainMenuConfig {
         result[0][3] = "statusCodeRequest";
         result[0][4] = "responseBodyRequest";
         result[0][5] = "status";
+
+        user.setFullName("Zanuar Tri Romadon");
+        user.setEmail("testlogout@gmail.com");
+        user.setPhoneNumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        loginMenu.deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
+        loginMenu.register(user);
+        System.out.println(getResponse().getBody().asString());
+        loginMenu.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
     }
 
     @BeforeMethod
     public void beforeMethod() {
-        user.setPhonenumber("+6281252930398");
+        user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         loginMenu.login(user);
+        System.out.println(getResponse().getBody().asString());
     }
 
-    @Test(dataProvider = "dataLogout", timeOut = 15000)
+    @Test(dataProvider = "dataLogout", timeOut = 30000)
     public void testLogout(
             String description,
             String phoneNumber,
@@ -54,9 +68,10 @@ public class TC_Logout extends MainMenuConfig {
         result[testCaseIndex][4] = responseBodyRequest;
         result[testCaseIndex][5] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
         loginMenu.logout(user);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
         result[testCaseIndex][5] = "SUCCESS";
@@ -69,6 +84,8 @@ public class TC_Logout extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
+        loginMenu.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Logout");
     }

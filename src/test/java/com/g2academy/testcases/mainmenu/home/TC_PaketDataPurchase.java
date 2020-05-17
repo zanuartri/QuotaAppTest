@@ -42,19 +42,27 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[0][15] = "statusCodeInvoice";
         result[0][16] = "responseBodyInvoice";
         result[0][17] = "status";
+    }
 
-        user.setFullname("Zanuar Tri Romadon");
+    @BeforeMethod
+    public void beforeMethod() {
+        user.setFullName("Zanuar Tri Romadon");
         user.setEmail("triromadon@gmail.com");
-        user.setPhonenumber("+6281252930398");
+        user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
+        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.register(user);
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
+        System.out.println(getResponse().getBody().asString());
+        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.login(user);
+        System.out.println(getResponse().getBody().asString());
     }
 
-    @Test(dataProvider = "paketDataPurchase")
+    @Test(dataProvider = "paketDataPurchase", timeOut = 30000)
     public void testPaketDataPurchase(
             String description,
             String phoneNumber,
@@ -74,26 +82,26 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
             String statusCodeInvoice,
             String responseBodyInvoice
     ) {
-        result[0][0] = description;
-        result[0][1] = phoneNumber;
-        result[0][2] = phoneNumberForPaketData;
-        result[0][3] = provider;
-        result[0][4] = price;
-        result[0][5] = paketData;
-        result[0][6] = statusCodeRequest;
-        result[0][7] = responseBodyRequest;
-        result[0][8] = paymentMethod;
-        result[0][9] = phoneNumberForPayment;
-        result[0][10] = pinTransaction;
-        result[0][11] = virtualAccount;
-        result[0][12] = statusCodeConfirmation;
-        result[0][13] = responseBodyConfirmation;
-        result[0][14] = imageName;
-        result[0][15] = statusCodeInvoice;
-        result[0][16] = responseBodyInvoice;
-        result[0][17] = "FAILED";
+        result[testCaseIndex][0] = description;
+        result[testCaseIndex][1] = phoneNumber;
+        result[testCaseIndex][2] = phoneNumberForPaketData;
+        result[testCaseIndex][3] = provider;
+        result[testCaseIndex][4] = price;
+        result[testCaseIndex][5] = paketData;
+        result[testCaseIndex][6] = statusCodeRequest;
+        result[testCaseIndex][7] = responseBodyRequest;
+        result[testCaseIndex][8] = paymentMethod;
+        result[testCaseIndex][9] = phoneNumberForPayment;
+        result[testCaseIndex][10] = pinTransaction;
+        result[testCaseIndex][11] = virtualAccount;
+        result[testCaseIndex][12] = statusCodeConfirmation;
+        result[testCaseIndex][13] = responseBodyConfirmation;
+        result[testCaseIndex][14] = imageName;
+        result[testCaseIndex][15] = statusCodeInvoice;
+        result[testCaseIndex][16] = responseBodyInvoice;
+        result[testCaseIndex][17] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setPinTransaction(pinTransaction);
         user.setVirtualAccount(virtualAccount);
         purchasePaketData(user, phoneNumberForPaketData, provider, price, paketData);
@@ -126,11 +134,12 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
+        loginMenuConfig.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data Purchase");
     }

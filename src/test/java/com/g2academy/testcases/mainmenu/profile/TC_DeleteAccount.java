@@ -1,90 +1,83 @@
 package com.g2academy.testcases.mainmenu.profile;
 
-import com.g2academy.base.*;
+import com.g2academy.base.Assertion;
+import com.g2academy.base.LoginMenuConfig;
+import com.g2academy.base.MainMenuConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_EditUser extends MainMenuConfig {
+public class TC_DeleteAccount extends MainMenuConfig {
+    LoginMenuConfig loginMenu = new LoginMenuConfig();
     private User user = new User();
     private Assertion assertion = new Assertion();
-    private String[][] result = new String[100][16];
+    private String[][] result = new String[100][6];
     private int testCaseIndex;
-    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
 
-    @DataProvider(name="dataEditUser")
+    @DataProvider(name="dataDelete")
     Object[][] getDataFromExcel() throws IOException {
-        return getDataProfileMenu("Edit User");
+        return getDataProfileMenu("Delete");
     }
 
     @BeforeClass
     public void beforeClass() {
         testCaseIndex = 1;
         result[0][0] = "description";
-        result[0][1] = "fullName";
-        result[0][2] = "phoneNumber";
-        result[0][3] = "email";
-        result[0][4] = "statusCodeRequest";
-        result[0][5] = "responseBodyRequest";
-        result[0][6] = "status";
+        result[0][1] = "phoneNumber";
+        result[0][2] = "statusCodeRequest";
+        result[0][3] = "responseBodyRequest";
+        result[0][4] = "status";
     }
 
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testedituser@gmail.com");
+        user.setEmail("testdelete@gmail.com");
         user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+        loginMenu.deleteAcount(user.getPhoneNumber());
         System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.register(user);
+        loginMenu.register(user);
         System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        loginMenu.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
         System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.login(user);
+        loginMenu.login(user);
         System.out.println(getResponse().getBody().asString());
     }
-
-    @Test(dataProvider = "dataEditUser", timeOut = 30000)
-    public void testEditUser(
+    @Test(dataProvider = "dataDelete", timeOut = 30000)
+    public void testLogout(
             String description,
-            String fullname,
             String phoneNumber,
-            String email,
             String statusCodeRequest,
             String responseBodyRequest
     ) {
         result[testCaseIndex][0] = description;
-        result[testCaseIndex][1] = fullname;
-        result[testCaseIndex][2] = phoneNumber;
-        result[testCaseIndex][3] = email;
-        result[testCaseIndex][4] = statusCodeRequest;
-        result[testCaseIndex][5] = responseBodyRequest;
-        result[testCaseIndex][6] = "FAILED";
+        result[testCaseIndex][1] = phoneNumber;
+        result[testCaseIndex][2] = statusCodeRequest;
+        result[testCaseIndex][3] = responseBodyRequest;
+        result[testCaseIndex][4] = "FAILED";
 
-        editUser(user, fullname, phoneNumber, email);
+        loginMenu.deleteAcount(phoneNumber);
         System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
-        loginMenuConfig.deleteAcount(phoneNumber);
-        System.out.println(getResponse().getBody().asString());
-        result[testCaseIndex][6] = "SUCCESS";
+        result[testCaseIndex][4] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930398");
+        loginMenu.deleteAcount("+6281252930398");
         System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
         SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Edit User");
+        excel.writeExcel(result, "Delete");
     }
 }

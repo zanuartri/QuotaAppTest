@@ -37,19 +37,26 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[0][13] = "statusCodeNewPassword";
         result[0][14] = "responseBodyNewPassword";
         result[0][15] = "status";
-
-        user.setFullname("Zanuar Tri Romadon");
-        user.setEmail("triromadon@gmail.com");
-        user.setPhonenumber("+6281252930398");
-        user.setPassword("Zanuar30@@");
-        user.setConfirmPassword("Zanuar30@@");
-        user.setPinTransaction("123456");
-        deleteAcount(user.getPhonenumber());
-        register(user);
-        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "TRUE");
     }
 
-    @Test(dataProvider = "dataForgotPassword", timeOut = 15000)
+    @BeforeMethod
+    public void beforeMethod() {
+        user.setFullName("Zanuar Tri Romadon");
+        user.setEmail("testforgotpasswordbackend@gmail.com");
+        user.setPhoneNumber("+6281252930398");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
+        register(user);
+        System.out.println(getResponse().getBody().asString());
+        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
+    }
+
+    @Test(dataProvider = "dataForgotPassword", timeOut = 30000)
     public void testForgotPassword(
             String description,
             String phoneNumber,
@@ -84,9 +91,10 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[testCaseIndex][14] = responseBodyNewPassword;
         result[testCaseIndex][15] = "FAILED";
 
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setEmail(email);
         forgotPassword(user);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
 
@@ -96,9 +104,9 @@ public class TC_ForgotPassword extends LoginMenuConfig {
 
             if (verificationMethod.equals("OTP")) {
                 String generatedOTP = "";
-                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhonenumber());
+                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
                 else generatedOTP = otpCode;
-                otp.sendCodeForgotPassword(user.getPhonenumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                otp.sendCodeForgotPassword(user.getPhoneNumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
                 assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                 assertion.responseBodyContains(responseBodyNewPassword);
             } else {
@@ -118,17 +126,20 @@ public class TC_ForgotPassword extends LoginMenuConfig {
             }
         }
 
+        deleteAcount(phoneNumber);
+        System.out.println(getResponse().getBody().asString());
         result[testCaseIndex][15] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
+        deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
-        deleteAcount("+6281252930398");
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Forgot Password");
     }

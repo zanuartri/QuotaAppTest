@@ -42,7 +42,7 @@ public class TC_Register extends LoginMenuConfig {
         deleteAcount("+6281252930398");
     }
 
-    @Test(dataProvider = "dataRegister", timeOut = 15000)
+    @Test(dataProvider = "dataRegister", timeOut = 30000)
     public void testRegister(
             String description,
             String pinTransaction,
@@ -77,21 +77,26 @@ public class TC_Register extends LoginMenuConfig {
         result[testCaseIndex][14] = responseBodyConfirmation;
         result[testCaseIndex][15] = "FAILED";
 
-        user.setFullname(fullName);
+        deleteAcount(phoneNumber);
+        System.out.println(getResponse().getBody().asString());
+        user.setFullName(fullName);
         user.setEmail(email);
-        user.setPhonenumber(phoneNumber);
+        user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
         user.setConfirmPassword(confirmPassword);
         user.setPinTransaction(pinTransaction);
         register(user);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
 
         if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, "TRUE");
+            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, token);
+            System.out.println(getResponse().getBody().asString());
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
-            deleteAcount(user.getPhonenumber());
+            deleteAcount(user.getPhoneNumber());
+            System.out.println(getResponse().getBody().asString());
         }
 
         result[testCaseIndex][15] = "SUCCESS";
@@ -99,7 +104,8 @@ public class TC_Register extends LoginMenuConfig {
 
     @AfterMethod
     public void afterMethod() {
-        deleteAcount(user.getPhonenumber());
+        deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
         testCaseIndex++;
     }
 

@@ -10,14 +10,14 @@ import java.io.IOException;
 public class LoginMenuConfig extends RequestConfig {
     public void login(User user) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("noTelepon", user.getPhoneNumber());
         requestParams.put("password", user.getPassword());
         postRequest(requestParams, "/api/auth/signin");
     }
 
     public void logout(User user) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("noTelepon", user.getPhoneNumber());
         requestParams.put("password", user.getPassword());
         postRequest(requestParams, "/api/auth/signout");
     }
@@ -29,8 +29,8 @@ public class LoginMenuConfig extends RequestConfig {
     public void register(User user) {
         JSONObject requestParams = new JSONObject();
         requestParams.put("email", user.getEmail());
-        requestParams.put("namaUser", user.getFullname());
-        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("namaUser", user.getFullName());
+        requestParams.put("noTelepon", user.getPhoneNumber());
         requestParams.put("password", user.getPassword());
         requestParams.put("confirmPassword", user.getConfirmPassword());
         requestParams.put("pinTransaksi", user.getPinTransaction());
@@ -39,7 +39,7 @@ public class LoginMenuConfig extends RequestConfig {
 
     public void forgotPassword(User user) {
         JSONObject requestParams = new JSONObject();
-        requestParams.put("noTelepon", user.getPhonenumber());
+        requestParams.put("noTelepon", user.getPhoneNumber());
         requestParams.put("email", user.getEmail());
         postRequest(requestParams, "/api/auth/forgot-password");
     }
@@ -51,9 +51,9 @@ public class LoginMenuConfig extends RequestConfig {
         switch (verificationMethod) {
             case "OTP":
                 String generatedOtpCode = "";
-                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhonenumber());
+                if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhoneNumber());
                 else generatedOtpCode = otpCode;
-                otp.sendCodeRegister(user.getPhonenumber(), generatedOtpCode, statusOtpCode);
+                otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, statusOtpCode);
                 break;
             case "TOKEN":
                 String generatedToken = "";
