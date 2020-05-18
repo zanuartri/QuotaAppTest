@@ -34,7 +34,7 @@ public class TC_EditUser extends MainMenuConfig {
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testedituser@gmail.com");
+        user.setEmail("testedituserbackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");

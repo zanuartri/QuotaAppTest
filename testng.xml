@@ -6,14 +6,14 @@
     <listeners>
         <listener class-name="com.g2academy.utilities.Listeners"></listener>
     </listeners>
-    <test name="Login Menu Test">
+    <test thread-count="3" name="Login Menu Test">
         <classes>
             <class name="com.g2academy.testcases.loginmenu.TC_Login" />
             <class name="com.g2academy.testcases.loginmenu.TC_Register" />
             <class name="com.g2academy.testcases.loginmenu.TC_ForgotPassword" />
         </classes>
     </test>
-    <test name="Home Menu Test">
+    <test thread-count="2" name="Home Menu Test">
         <classes>
             <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataList" />
             <class name="com.g2academy.testcases.mainmenu.home.TC_PaketDataPurchase" />
@@ -24,7 +24,7 @@
             <class name="com.g2academy.testcases.mainmenu.history.TC_PaketDataHistory" />
         </classes>
     </test>
-    <test name="Profile Menu Test">
+    <test thread-count="4" name="Profile Menu Test">
         <classes>
             <class name="com.g2academy.testcases.mainmenu.profile.TC_EditUser" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />

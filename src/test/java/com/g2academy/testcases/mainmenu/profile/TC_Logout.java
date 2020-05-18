@@ -32,8 +32,8 @@ public class TC_Logout extends MainMenuConfig {
         result[0][5] = "status";
 
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testlogout@gmail.com");
-        user.setPhoneNumber("+6281252930398");
+        user.setEmail("testlogoutbackend@gmail.com");
+        user.setPhoneNumber("+6281252930399");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -47,7 +47,7 @@ public class TC_Logout extends MainMenuConfig {
 
     @BeforeMethod
     public void beforeMethod() {
-        user.setPhoneNumber("+6281252930398");
+        user.setPhoneNumber("+6281252930399");
         user.setPassword("Zanuar30@@");
         loginMenu.login(user);
         System.out.println(getResponse().getBody().asString());
@@ -84,7 +84,7 @@ public class TC_Logout extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenu.deleteAcount("+6281252930398");
+        loginMenu.deleteAcount("+6281252930399");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Logout");

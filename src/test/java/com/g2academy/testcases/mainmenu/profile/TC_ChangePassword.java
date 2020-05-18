@@ -43,8 +43,8 @@ public class TC_ChangePassword extends MainMenuConfig {
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("triromadon@gmail.com");
-        user.setPhoneNumber("+6281252930398");
+        user.setEmail("testchangepasswordbackend@gmail.com");
+        user.setPhoneNumber("+6281252930396");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -110,7 +110,7 @@ public class TC_ChangePassword extends MainMenuConfig {
                 System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                 assertion.responseBodyContains(responseBodyNewPassword);
-            } else {
+            } else if (verificationMethod.equals("TOKEN")) {
                 String generatedToken = "";
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
                 else generatedToken = token;
@@ -136,7 +136,7 @@ public class TC_ChangePassword extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930398");
+        loginMenuConfig.deleteAcount("+6281252930396");
         System.out.println(getResponse().getBody().asString());
     }
 

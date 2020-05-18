@@ -39,7 +39,7 @@ public class TC_Register extends LoginMenuConfig {
         result[0][14] = "responseBodyConfirmation";
         result[0][15] = "status";
 
-        deleteAcount("+6281252930398");
+        deleteAcount("+6281252930392");
     }
 
     @Test(dataProvider = "dataRegister", timeOut = 30000)
