@@ -30,8 +30,8 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[0][3] = "responseBodyRequest";
         result[0][4] = "status";
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testhistorybackend23@gmail.com");
-        user.setPhoneNumber("+6281252930363");
+        user.setEmail("testhistorybackend25@gmail.com");
+        user.setPhoneNumber("+6281252930353");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -76,7 +76,7 @@ public class TC_PaketDataHistory extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930363");
+        loginMenuConfig.deleteAcount("+6281252930353");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data History");
