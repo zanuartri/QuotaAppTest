@@ -29,10 +29,6 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[0][2] = "statusCodeRequest";
         result[0][3] = "responseBodyRequest";
         result[0][4] = "status";
-    }
-
-    @BeforeMethod
-    public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
         user.setEmail("testhistorybackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
@@ -47,7 +43,10 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         System.out.println(getResponse().getBody().asString());
         loginMenuConfig.login(user);
         System.out.println(getResponse().getBody().asString());
-
+        purchasePaketData(user, "+6281252930398", "Simpati", "27000", "Paket-Internet-1GB");
+        System.out.println(getResponse().getBody().asString());
+        payWithQWallet(user);
+        System.out.println(getResponse().getBody().asString());
     }
 
     @Test(dataProvider = "paketDataHistory", timeOut = 30000)
@@ -64,6 +63,7 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[testCaseIndex][4] = "FAILED";
 
         getPaketDataHistory(phoneNumber);
+        System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
         result[testCaseIndex][4] = "SUCCESS";
@@ -72,13 +72,12 @@ public class TC_PaketDataHistory extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930398");
-        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
         loginMenuConfig.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data History");
     }

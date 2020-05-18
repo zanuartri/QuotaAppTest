@@ -42,10 +42,6 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[0][15] = "statusCodeInvoice";
         result[0][16] = "responseBodyInvoice";
         result[0][17] = "status";
-    }
-
-    @BeforeMethod
-    public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
         user.setEmail("testpurchasebackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
@@ -102,19 +98,21 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[testCaseIndex][17] = "FAILED";
 
         user.setPhoneNumber(phoneNumber);
-        user.setPinTransaction(pinTransaction);
-        user.setVirtualAccount(virtualAccount);
         purchasePaketData(user, phoneNumberForPaketData, provider, price, paketData);
         System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
 
         if (paymentMethod.equals("QWALLET")) {
+            user.setPhoneNumber(phoneNumberForPayment);
+            user.setPinTransaction(pinTransaction);
             payWithQWallet(user);
             System.out.println(getResponse().getBody().asString());
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
             assertion.responseBodyContains(responseBodyConfirmation);
         } else if (paymentMethod.equals("VA")) {
+            user.setPhoneNumber(phoneNumberForPayment);
+            user.setVirtualAccount(virtualAccount);
             payWithVirtualAccount(user);
             System.out.println(getResponse().getBody().asString());
             assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
@@ -134,12 +132,12 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930398");
-        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
+        loginMenuConfig.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data Purchase");
     }

@@ -53,12 +53,14 @@ public class LoginMenuConfig extends RequestConfig {
                 String generatedOtpCode = "";
                 if (otpCode.equals("TRUE")) generatedOtpCode = otp.getCode(user.getPhoneNumber());
                 else generatedOtpCode = otpCode;
+                System.out.println(getResponse().getBody().asString());
                 otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, statusOtpCode);
                 break;
             case "TOKEN":
                 String generatedToken = "";
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
                 else generatedToken = token;
+                System.out.println(getResponse().getBody().asString());
                 tokenEmail.sendTokenRegister(generatedToken);
                 break;
             default:

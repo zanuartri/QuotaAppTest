@@ -1,0 +1,698 @@
+<html>
+<head>
+<title>TestNG:  QuotaAppTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>QuotaAppTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>95/4/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon May 18 16:39:57 WIB 2020</td>
+</tr>
+<tr><td>Total time:</td><td>717 seconds (717848 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number (outside Indonesia), 123456, Zanuar Tri Romadon, testregister@gmail.com, +601300808888, Zanuar30@@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td><div><pre>java.lang.AssertionError: expected [400] but found [200]
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1332064145", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1332064145'><pre>java.lang.AssertionError: expected [400] but found [200]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:652)
+	at org.testng.Assert.assertEquals(Assert.java:662)
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at sun.reflect.GeneratedMethodAccessor132.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:54)
+	at org.testng.internal.InvokeMethodRunnable.run(InvokeMethodRunnable.java:44)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number (registered number), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281234567890, Zanuar30@@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td><div><pre>java.lang.AssertionError: expected [400] but found [200]
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace134815104", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace134815104'><pre>java.lang.AssertionError: expected [400] but found [200]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:652)
+	at org.testng.Assert.assertEquals(Assert.java:662)
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at sun.reflect.GeneratedMethodAccessor132.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:54)
+	at org.testng.internal.InvokeMethodRunnable.run(InvokeMethodRunnable.java:44)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number (unverified number), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6285785161197, Zanuar30@@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td><div><pre>java.lang.AssertionError: expected [400] but found [200]
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace592182412", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace592182412'><pre>java.lang.AssertionError: expected [400] but found [200]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:652)
+	at org.testng.Assert.assertEquals(Assert.java:662)
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:90)
+	at sun.reflect.GeneratedMethodAccessor132.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:54)
+	at org.testng.internal.InvokeMethodRunnable.run(InvokeMethodRunnable.java:44)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: positif case - valid token, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, TOKEN, -, -, TRUE, 200, +6281252930398</td>
+<td><div><pre>java.lang.AssertionError: expected [200] but found [500]
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:96)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1211112446", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1211112446'><pre>java.lang.AssertionError: expected [200] but found [500]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:652)
+	at org.testng.Assert.assertEquals(Assert.java:662)
+	at com.g2academy.base.Assertion.statusCode(Assertion.java:8)
+	at com.g2academy.testcases.loginmenu.TC_Register.testRegister(TC_Register.java:96)
+	at sun.reflect.GeneratedMethodAccessor132.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:54)
+	at org.testng.internal.InvokeMethodRunnable.run(InvokeMethodRunnable.java:44)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, phone number, password, confirm password, bukan numeric, 12345678, testregister.gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, phone number, password, bukan numeric, 12345678, testregister.gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction,  full name, email, phone number, confirm password, bukan numeric, 12345678, testregister.gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, phone number, bukan numeric, 12345678, testregister.gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, password, confirm password, bukan numeric, 12345678, testregister.gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, password, bukan numeric, 12345678, testregister.gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, confirm password, bukan numeric, 12345678, testregister.gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, bukan numeric, 12345678, testregister.gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, phone number, password, confirm password, bukan numeric, 12345678, testregister@gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, phone number, password, bukan numeric, 12345678, testregister@gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, phone number , confirm password, bukan numeric, 12345678, testregister@gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, phone number, bukan numeric, 12345678, testregister@gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, password, confirm password, bukan numeric, 12345678, testregister@gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, password, bukan numeric, 12345678, testregister@gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, confirm password, bukan numeric, 12345678, testregister@gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, bukan numeric, 12345678, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, phone number, password, confirm password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, phone number, password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, phone number, confirm password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, phone number, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, password, confirm password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, confirm password, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, email, bukan numeric, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, phone number, password, confirm password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, phone number, password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, phone number, confirm password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, phone number, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, password, confirm password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, confirm password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction, full name, email, phone number, password, confirm password, bukan numeric, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, phone number, password, confirm password, 123456, 12345678, testregister.gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, phone number, password, 123456, 12345678, testregister.gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, phone number, confirm password, 123456, 12345678, testregister.gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, phone number, 123456, 12345678, testregister.gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, password, confirm password, 123456, 12345678, testregister.gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, password, 123456, 12345678, testregister.gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, confirm password, 123456, 12345678, testregister.gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, email, 123456, 12345678, testregister.gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, phone number, password, confirm password, 123456, 12345678, testregister@gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, phone number, password, 123456, 12345678, testregister@gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, phone number , confirm password, 123456, 12345678, testregister@gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, phone number, 123456, 12345678, testregister@gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, Your phone number must be all numeric, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, password, confirm password, 123456, 12345678, testregister@gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, password, 123456, 12345678, testregister@gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, confirm password, 123456, 12345678, testregister@gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name, 123456, 12345678, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your Full name must be all Alphabetic, -, -, -, -, -, -</td>
+<td></td>
+<td>5</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, phone number, password, confirm password, 123456, Zanuar Tri Romadon, testregister.gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, phone number, password, 123456, Zanuar Tri Romadon, testregister.gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, phone number, confirm password, 123456, Zanuar Tri Romadon, testregister.gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, phone number, 123456, Zanuar Tri Romadon, testregister.gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, password, confirm password, 123456, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, password, 123456, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, confirm password, 123456, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email, 123456, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - inalid phone number, password, confirm password, 123456, Zanuar Tri Romadon, testregister@gmail.com, not a number, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number, password, 123456, Zanuar Tri Romadon, testregister@gmail.com, not a number, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number, confirm password, 123456, Zanuar Tri Romadon, testregister@gmail.com, not a number, Zanuar30@@, ConfirmPasswordSalah, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number, 123456, Zanuar Tri Romadon, testregister@gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, Your phone number must be all numeric, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password, confirm password, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordSalah, ConfirmPasswordSalah, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - inavalid password, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordSalah, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, ConfirmPasswordSalah, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: positive case - valid pin transaction, full name, email, phone number, password, confirm password, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, TRUE, true, -, 200, +6281252930398</td>
+<td></td>
+<td>12</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction (below 6 characters), 123, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your pin length transaksi must be 6, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction (exceed 6 characters), 1234567890, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your pin length transaksi must be 6, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid pin transaction (not numerical only), inipin, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, JSON parse error, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name (below 3 characters), 123456, za, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Length nama user must be less than 3 character, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name (exceed 20 characters), 123456, zanuar tri romadon lebih panjang dikit hehe, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, size must be between 0 and 20, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid full name (non alphabetical), 123456, 0123 456 78, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your Full name must be all Alphabetic, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid email (no @), 123456, Zanuar Tri Romadon, testregister.gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 400, Your email address is invalid, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number format (not numerical), 123456, Zanuar Tri Romadon, testregister@gmail.com, not a number, Zanuar30@@, Zanuar30@@, 400, Your phone number must be all numeric, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid phone number format (exceed 15 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +628123456789101112222, Zanuar30@@, Zanuar30@@, 400, Your phone number must be less than 15, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (no lower case alphabetical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PASSWORD12345@@, Zanuar30@@, 400, Your password must contains one lowercase characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (no upper case alphabetical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, password12345, Zanuar30@@, 400, Your password must contains one uppercase characters, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (no special character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Password12345, Zanuar30@@, 400, Your password must contains one symbol characters, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (no numerical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordSalah@@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (below 8 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Pwd123@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td></td>
+<td>3</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid password (exceed 16 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, PasswordMelebihi16Karakter@@, Zanuar30@@, 400, ERROR, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (no lower case alphabetical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, PASSWORD12345@@, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (no upper case alphabetical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, password12345, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (no special character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Password12345, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (no numerical character), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, PasswordSalah, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (below 8 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Pwd123@, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid confirm password (exceed 16 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, PasswordMelebihi16Karakter, 400, Please check your password not Match, -, -, -, -, -, -</td>
+<td></td>
+<td>4</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code, status otp code, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 12AX, false, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 12AX, true, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid status otp code, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, TRUE, false, -, 400, Wrong otp</td>
+<td></td>
+<td>12</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: positive case - valid otp code, valid status otp code, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, TRUE, true, -, 200, +6281252930398</td>
+<td></td>
+<td>11</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code (below 4 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 253, true, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>10</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code (exceed 4 characters), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 1697389, true, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>10</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code (not numerical only), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 12AX, true, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid status otp code (timeout), 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, TRUE, false, -, 400, Wrong otp</td>
+<td></td>
+<td>11</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid otp code, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, OTP, 1541, true, -, 400, Your otp wrong please try aggin</td>
+<td></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+<tr>
+<td title='com.g2academy.testcases.loginmenu.TC_Register.testRegister()'><b>testRegister</b><br>Test class: com.g2academy.testcases.loginmenu.TC_Register<br>Parameters: negative case - invalid token, 123456, Zanuar Tri Romadon, testregister@gmail.com, +6281252930398, Zanuar30@@, Zanuar30@@, 200, 200, TOKEN, -, -, token-salah, 500, 500</td>
+<td></td>
+<td>9</td>
+<td>com.g2academy.testcases.loginmenu.TC_Register@22f71333</td></tr>
+</table><p>
+</body>
+</html>
