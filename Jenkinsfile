@@ -9,7 +9,7 @@ mvn compile'''
       }
     }
 
-    stage('Test Register') {
+    stage('Start') {
       parallel {
         stage('Test Register') {
           steps {
@@ -38,7 +38,7 @@ mvn -Dtest=TC_ForgotPassword test'''
       }
     }
 
-    stage('Test Internet Data List') {
+    stage('Transaction') {
       parallel {
         stage('Test Internet Data List') {
           steps {
@@ -67,7 +67,7 @@ mvn -Dtest=TC_PaketDataHistory test'''
       }
     }
 
-    stage('Test Edit Personal Information') {
+    stage('Personal Information') {
       parallel {
         stage('Test Edit Personal Information') {
           steps {
