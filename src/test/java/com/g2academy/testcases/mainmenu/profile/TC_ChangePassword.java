@@ -38,10 +38,7 @@ public class TC_ChangePassword extends MainMenuConfig {
         result[0][13] = "statusCodeNewPassword";
         result[0][14] = "responseBodyNewPassword";
         result[0][15] = "status";
-    }
 
-    @BeforeMethod
-    public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
         user.setEmail("testchangepasswordbackend@gmail.com");
         user.setPhoneNumber("+6281252930396");
@@ -128,20 +125,18 @@ public class TC_ChangePassword extends MainMenuConfig {
             }
         }
 
-        loginMenuConfig.deleteAcount(phoneNumber);
-        System.out.println(getResponse().getBody().asString());
         result[testCaseIndex][15] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930396");
-        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
+        loginMenuConfig.deleteAcount("+6281252930396");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Change Password");
     }

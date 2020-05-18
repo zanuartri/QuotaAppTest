@@ -43,8 +43,8 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[0][16] = "responseBodyInvoice";
         result[0][17] = "status";
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testpurchasebackend@gmail.com");
-        user.setPhoneNumber("+6281252930395");
+        user.setEmail("testpurchasebackend2@gmail.com");
+        user.setPhoneNumber("+6281252930385");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -136,7 +136,7 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930395");
+        loginMenuConfig.deleteAcount("+6281252930385");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data Purchase");
