@@ -37,10 +37,7 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[0][13] = "statusCodeNewPassword";
         result[0][14] = "responseBodyNewPassword";
         result[0][15] = "status";
-    }
 
-    @BeforeMethod
-    public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
         user.setEmail("testforgotpasswordbackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
@@ -107,26 +104,28 @@ public class TC_ForgotPassword extends LoginMenuConfig {
                 if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
                 else generatedOTP = otpCode;
                 otp.sendCodeForgotPassword(user.getPhoneNumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
+                System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                 assertion.responseBodyContains(responseBodyNewPassword);
-            } else {
+            } else if (verificationMethod.equals("TOKEN")){
                 String generatedToken = "";
                 if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
                 else generatedToken = token;
                 tokenEmail.sendTokenForgotPassword(generatedToken);
+                System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
                 assertion.responseBodyContains(responseBodyConfirmation);
 
                 if (token.equals("TRUE")) {
                     MainMenuConfig mainMenuConfig = new MainMenuConfig();
                     mainMenuConfig.changePassword(user, newPassword, confirmNewPassword);
+                    System.out.println(getResponse().getBody().asString());
                     assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                     assertion.responseBodyContains(responseBodyNewPassword);
                 }
             }
         }
 
-        deleteAcount(phoneNumber);
         System.out.println(getResponse().getBody().asString());
         result[testCaseIndex][15] = "SUCCESS";
     }
@@ -134,12 +133,12 @@ public class TC_ForgotPassword extends LoginMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        deleteAcount("+6281252930398");
-        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass
     public void afterClass() throws IOException {
+        deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Forgot Password");
     }
