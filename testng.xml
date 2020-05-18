@@ -29,6 +29,7 @@
             <class name="com.g2academy.testcases.mainmenu.profile.TC_EditUser" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_ChangePassword" />
             <class name="com.g2academy.testcases.mainmenu.profile.TC_Logout" />
+            <class name="com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount" />
         </classes>
     </test>
 </suite>

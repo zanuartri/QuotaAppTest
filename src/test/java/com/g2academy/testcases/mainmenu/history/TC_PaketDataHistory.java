@@ -29,16 +29,25 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[0][2] = "statusCodeRequest";
         result[0][3] = "responseBodyRequest";
         result[0][4] = "status";
+    }
 
+    @BeforeMethod
+    public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("triromadon@gmail.com");
+        user.setEmail("testhistorybackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
+        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.register(user);
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+        System.out.println(getResponse().getBody().asString());
         loginMenuConfig.login(user);
+        System.out.println(getResponse().getBody().asString());
+
     }
 
     @Test(dataProvider = "paketDataHistory", timeOut = 30000)
@@ -63,6 +72,8 @@ public class TC_PaketDataHistory extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
+        loginMenuConfig.deleteAcount("+6281252930398");
+        System.out.println(getResponse().getBody().asString());
     }
 
     @AfterClass

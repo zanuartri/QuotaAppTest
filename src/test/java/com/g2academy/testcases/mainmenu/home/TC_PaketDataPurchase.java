@@ -47,7 +47,7 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("triromadon@gmail.com");
+        user.setEmail("testpurchasebackend@gmail.com");
         user.setPhoneNumber("+6281252930398");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");

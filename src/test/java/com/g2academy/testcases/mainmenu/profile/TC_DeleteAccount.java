@@ -49,7 +49,7 @@ public class TC_DeleteAccount extends MainMenuConfig {
         System.out.println(getResponse().getBody().asString());
     }
     @Test(dataProvider = "dataDelete", timeOut = 30000)
-    public void testLogout(
+    public void testDeleteAccount(
             String description,
             String phoneNumber,
             String statusCodeRequest,
