@@ -39,8 +39,8 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[0][15] = "status";
 
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testforgotpasswordbackend@gmail.com");
-        user.setPhoneNumber("+6281252930390");
+        user.setEmail("testforgotpasswordbackend23@gmail.com");
+        user.setPhoneNumber("+6281252930360");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
@@ -137,7 +137,7 @@ public class TC_ForgotPassword extends LoginMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        deleteAcount("+6281252930390");
+        deleteAcount("+6281252930360");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Forgot Password");

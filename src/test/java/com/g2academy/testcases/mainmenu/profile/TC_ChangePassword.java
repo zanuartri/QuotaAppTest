@@ -40,8 +40,8 @@ public class TC_ChangePassword extends MainMenuConfig {
         result[0][15] = "status";
 
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testchangepasswordbackend@gmail.com");
-        user.setPhoneNumber("+6281252930396");
+        user.setEmail("testchangepasswordbackend23@gmail.com");
+        user.setPhoneNumber("+6281252930366");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -135,7 +135,7 @@ public class TC_ChangePassword extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930396");
+        loginMenuConfig.deleteAcount("+6281252930366");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Change Password");

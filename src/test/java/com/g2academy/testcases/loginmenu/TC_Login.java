@@ -30,8 +30,8 @@ public class TC_Login extends LoginMenuConfig {
         result[0][5] = "status";
 
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testloginbackend@gmail.com");
-        user.setPhoneNumber("+6281252930391");
+        user.setEmail("testloginbackend23@gmail.com");
+        user.setPhoneNumber("+6281252930361");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -78,7 +78,7 @@ public class TC_Login extends LoginMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        deleteAcount("+6281252930391");
+        deleteAcount("+6281252930361");
         System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Login");

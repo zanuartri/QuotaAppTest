@@ -34,8 +34,8 @@ public class TC_EditUser extends MainMenuConfig {
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testedituserbackend@gmail.com");
-        user.setPhoneNumber("+6281252930398");
+        user.setEmail("testedituserbackend23@gmail.com");
+        user.setPhoneNumber("+6281252930368");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -78,7 +78,7 @@ public class TC_EditUser extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenuConfig.deleteAcount("+6281252930398");
+        loginMenuConfig.deleteAcount("+6281252930368");
         System.out.println(getResponse().getBody().asString());
     }
 

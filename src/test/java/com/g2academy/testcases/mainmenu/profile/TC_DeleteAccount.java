@@ -34,8 +34,8 @@ public class TC_DeleteAccount extends MainMenuConfig {
     @BeforeMethod
     public void beforeMethod() {
         user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testdeletebackend@gmail.com");
-        user.setPhoneNumber("+6281252930397");
+        user.setEmail("testdeletebackend23@gmail.com");
+        user.setPhoneNumber("+6281252930367");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
@@ -71,7 +71,7 @@ public class TC_DeleteAccount extends MainMenuConfig {
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-        loginMenu.deleteAcount("+6281252930397");
+        loginMenu.deleteAcount("+6281252930367");
         System.out.println(getResponse().getBody().asString());
     }
 
