@@ -42,7 +42,8 @@ public class TestConfig {
 	public void setup() {
 		logger = Logger.getLogger("QuotaAppRestAPI");
 		PropertyConfigurator.configure("Log4j.properties");
-		RestAssured.baseURI = "https://project-danapprentech-3.herokuapp.com";
+		RestAssured.baseURI = "http://ec2-3-89-102-145.compute-1.amazonaws.com";
+		RestAssured.port = 9703;
 		httpRequest = RestAssured.given();
 	}
 
