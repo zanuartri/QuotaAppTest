@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>QuotaAppTest</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>37/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/11</td>
 </tr><tr>
-<td>Started on:</td><td>Tue May 19 05:29:03 WIB 2020</td>
+<td>Started on:</td><td>Tue May 19 07:41:03 WIB 2020</td>
 </tr>
-<tr><td>Total time:</td><td>268 seconds (268479 ms)</td>
+<tr><td>Total time:</td><td>3 seconds (3336 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,198 +67,612 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number and email, not a number, testchangepassword.gmail.com, 400, Email not registered, -, -, -, -, -, -, -, -, -, -</td>
-<td></td>
-<td>2</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2029372696", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2029372696'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number, not a number, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid email, +6281252930396, testchangepassword.gmail.com, 400, Email not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>2</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: positif case - valid phone number and email, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, Password12345@@, 200, +6281252930396</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number format (not numerical), not a number, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number format (exceed 15 characters), +628123456789101112222, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number (outside Indonesia), +601300808888, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number (unregistered number), +6281234567890, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid phone number (unverified number), +6285785161197, testchangepasswordbackend@gmail.com, 400, Phone number not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>3</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid email (no @), +6281252930396, testchangepassword.gmail.com, 400, Email not registered, -, -, -, -, -, -, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>2</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code, status otp code, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 12AX, false, -, -, -, Password12345@@, Password12345@@, 400, Wrong otp</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod()'><b>beforeMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 12AX, true, -, -, -, Password12345@@, Password12345@@, 200, </td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>6</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid status otp code, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, false, -, -, -, Password12345@@, Password12345@@, 400, Wrong otp</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: positive case - valid otp code, valid status otp code, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, Password12345@@, 200, +6281252930396</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code (below 4 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 253, true, -, -, -, Password12345@@, Password12345@@, 400, Your otp length must be 4</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>5</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code (exceed 4 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 1697389, true, -, -, -, Password12345@@, Password12345@@, 400, Your otp length must be 4</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>5</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code (not numerical only), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 12AX, true, -, -, -, Password12345@@, Password12345@@, 200, </td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>5</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid status otp code (timeout), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, false, -, -, -, Password12345@@, Password12345@@, 400, Wrong otp</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>9</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid otp code, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, 1256, true, -, -, -, Password12345@@, Password12345@@, 200, </td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>5</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: positif case - valid token, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, TOKEN, -, -, TRUE, 200, Your token has been reset, Password12345@@, Password12345@@, 200, +6281252930396</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>10</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid token, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, TOKEN, -, -, token-salah, 500, Internal Server Error, -, -, -, -</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>6</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password, invalid confirm new password, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, 200, Your token has been reset, PasswordSalah@@, PasswordSalah@@, 200, </td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterMethod()'><b>afterMethod</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password, valid confirm new password, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, 200, Your token has been reset, PasswordSalah@@, Password12345@@, 400, Your Password doesnt match</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.afterClass()'><b>afterClass</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - valid new password, invalid confirm new password, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, 200, Your token has been reset, Password12345@@, PasswordSalah@@, 400, Your Password doesnt match</td>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.teardown()'><b>teardown</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
 <td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: positive case - valid new password, valid confirm new password, +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, Password12345@@, 200, +6281252930396</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace923083575", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace923083575'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password (no lower case alphabetical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, PASSWORD12345@@, Password12345@@, 400, 400</td>
-<td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1299327689", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1299327689'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password (no upper case alphabetical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, password12345, Password12345@@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1033348658", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1033348658'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalidnew  password (no special character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345, Password12345@@, 400, 400</td>
-<td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2121995675", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2121995675'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password (no numerical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, PasswordSalah@@, Password12345@@, 400, 400</td>
-<td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace691691381", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace691691381'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password (below 8 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Pwd123@, Password12345@@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1458091526", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1458091526'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid new password (exceed 16 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, PasswordMelebihi16Karakter@@, Password12345@@, 400, 400</td>
-<td></td>
-<td>8</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1393828949", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1393828949'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (no lower case alphabetical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, PASSWORD12345@@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1620529408", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1620529408'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (no upper case alphabetical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, password12345, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1640612861", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1640612861'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (no special character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, Password12345, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace746280996", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace746280996'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 <tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (no numerical character), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, PasswordSalah@@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
-<tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (below 8 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, Pwd123@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
-<tr>
-<td title='com.g2academy.testcases.mainmenu.profile.TC_ChangePassword.testChangePassword()'><b>testChangePassword</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_ChangePassword<br>Parameters: negative case - invalid confirm new password (exceed 16 characters), +6281252930396, testchangepasswordbackend@gmail.com, 200, 200, OTP, TRUE, true, -, -, -, Password12345@@, PasswordMelebihi16Karakter@@, 400, 400</td>
-<td></td>
-<td>7</td>
-<td>com.g2academy.testcases.mainmenu.profile.TC_ChangePassword@22f71333</td></tr>
+<td title='com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.testDeleteAccount()'><b>testDeleteAccount</b><br>Test class: com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace146874094", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace146874094'><pre>java.lang.NullPointerException
+	at com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount.beforeMethod(TC_DeleteAccount.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:110)
+</pre></div></td>
+<td>0</td>
+<td>com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount@13969fbe</td></tr>
 </table><p>
 </body>
 </html>

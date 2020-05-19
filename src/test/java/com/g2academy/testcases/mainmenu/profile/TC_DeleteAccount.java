@@ -39,15 +39,12 @@ public class TC_DeleteAccount extends MainMenuConfig {
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenu.deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
         loginMenu.register(user);
         System.out.println(getResponse().getBody().asString());
         loginMenu.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
         System.out.println(getResponse().getBody().asString());
-        loginMenu.login(user);
-        System.out.println(getResponse().getBody().asString());
     }
+
     @Test(dataProvider = "dataDelete", timeOut = 30000)
     public void testDeleteAccount(
             String description,

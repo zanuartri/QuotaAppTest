@@ -60,19 +60,17 @@ public class TC_Login extends LoginMenuConfig {
 
         user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
-        logout(user);
-        System.out.println(getResponse().getBody().asString());
         login(user);
         System.out.println(getResponse().getBody().asString());
         assertion.statusCode(Integer.parseInt(statusCodeRequest));
         assertion.responseBodyContains(responseBodyRequest);
+        logout(user);
+        System.out.println(getResponse().getBody().asString());
         result[testCaseIndex][5] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
-        logout(user);
-        System.out.println(getResponse().getBody().asString());
         testCaseIndex++;
     }
 
