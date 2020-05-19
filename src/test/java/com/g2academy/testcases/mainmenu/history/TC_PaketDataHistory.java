@@ -2,7 +2,7 @@ package com.g2academy.testcases.mainmenu.history;
 
 import com.g2academy.base.LoginMenuConfig;
 import com.g2academy.base.MainMenuConfig;
-import com.g2academy.base.OTPCode;
+import com.g2academy.base.TokenEmail;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.Assert;
@@ -23,7 +23,7 @@ public class TC_PaketDataHistory extends MainMenuConfig {
 
     @BeforeClass
     public void beforeClass() {
-        OTPCode otp = new OTPCode();
+        TokenEmail tokenEmail = new TokenEmail();
 
         testCaseIndex = 1;
         result[0][0] = "description";
@@ -43,15 +43,15 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
         Assert.assertTrue(getResponse().jsonPath().getString("message").contains("+6281252930353 ----"));
 
-        otp.getCode(user.getPhoneNumber());
-        String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+        tokenEmail.getToken(user.getEmail());
+        String generatedToken = getResponse().jsonPath().getString("codeVerify");
         Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
         Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
-        Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+        Assert.assertTrue(getResponse().jsonPath().getBoolean("statusEmailVerify"));
 
-        otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
+        tokenEmail.sendTokenRegister(generatedToken);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
-        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("signup is successfully"));
+        Assert.assertEquals(getResponse().jsonPath().getString("message"), "signup is successfully");
         Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
         Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
         Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
