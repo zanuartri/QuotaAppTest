@@ -59,7 +59,7 @@ mvn -Dtest=TC_PaketDataPurchase test'''
       }
     }
 
-    stage('Test Transaction History') {
+    stage('History') {
       steps {
         sh '''export M2_HOME=/usr/local/Cellar/maven/3.6.3_1/libexec
 export PATH=$PATH:$M2_HOME/bin
@@ -67,7 +67,7 @@ mvn -Dtest=TC_PaketDataHistory test'''
       }
     }
 
-    stage('Test Edit Personal Information') {
+    stage('Personal Information') {
       parallel {
         stage('Test Edit Personal Information') {
           steps {
