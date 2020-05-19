@@ -3,15 +3,16 @@ package com.g2academy.testcases.mainmenu.home;
 import com.g2academy.base.Assertion;
 import com.g2academy.base.LoginMenuConfig;
 import com.g2academy.base.MainMenuConfig;
+import com.g2academy.base.OTPCode;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 public class TC_PaketDataPurchase extends MainMenuConfig {
     private User user = new User();
-    private Assertion assertion = new Assertion();
     private String[][] result = new String[200][18];
     private int testCaseIndex;
     private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
@@ -23,6 +24,8 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
     @BeforeClass
     public void beforeClass() {
+        OTPCode otp = new OTPCode();
+
         testCaseIndex = 1;
         result[0][0] = "description";
         result[0][1] = "phoneNumber";
@@ -42,20 +45,40 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         result[0][15] = "statusCodeInvoice";
         result[0][16] = "responseBodyInvoice";
         result[0][17] = "status";
+
         user.setFullName("Zanuar Tri Romadon");
         user.setEmail("testpurchasebackend23@gmail.com");
         user.setPhoneNumber("+6281252930365");
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenuConfig.deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
+
         loginMenuConfig.register(user);
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-        System.out.println(getResponse().getBody().asString());
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("+6281252930365 ----"));
+
+        otp.getCode(user.getPhoneNumber());
+        String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+        Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+
+        otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("signup is successfully"));
+        Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
+        Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
+
         loginMenuConfig.login(user);
-        System.out.println(getResponse().getBody().asString());
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("successfully"));
+        Assert.assertNotNull(getResponse().jsonPath().getString("token"));
+        Assert.assertEquals(getResponse().jsonPath().getString("type"), "Bearer");
+        Assert.assertEquals(getResponse().jsonPath().getString("username"), user.getPhoneNumber());
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertNotNull(getResponse().jsonPath().getString("saldo"));
     }
 
     @Test(dataProvider = "paketDataPurchase", timeOut = 30000)
@@ -99,30 +122,45 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
         user.setPhoneNumber(phoneNumber);
         purchasePaketData(user, phoneNumberForPaketData, provider, price, paketData);
-        System.out.println(getResponse().getBody().asString());
-        assertion.statusCode(Integer.parseInt(statusCodeRequest));
-        assertion.responseBodyContains(responseBodyRequest);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeRequest));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyRequest));
+
+        if (statusCodeRequest.equals("200")) {
+            Assert.assertEquals(getResponse().jsonPath().getString("namaProvider"), provider);
+            Assert.assertEquals(getResponse().jsonPath().getString("harga"), price);
+            Assert.assertEquals(getResponse().jsonPath().getString("paketData"), paketData);
+            Assert.assertEquals(getResponse().jsonPath().getString("nomorPaketData"), phoneNumberForPaketData);
+            Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+        }
 
         if (paymentMethod.equals("QWALLET")) {
             user.setPhoneNumber(phoneNumberForPayment);
             user.setPinTransaction(pinTransaction);
             payWithQWallet(user);
-            System.out.println(getResponse().getBody().asString());
-            assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-            assertion.responseBodyContains(responseBodyConfirmation);
+            Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+            Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+
+            if (statusCodeConfirmation.equals("200")) {
+                Assert.assertEquals(getResponse().jsonPath().getString("namaUser"), user.getFullName());
+                Assert.assertEquals(getResponse().jsonPath().getString("nomorTeleponUser"), user.getPhoneNumber());
+                Assert.assertEquals(getResponse().jsonPath().getString("nomorPaketData"), phoneNumberForPaketData);
+                Assert.assertEquals(getResponse().jsonPath().getString("namaProvider"), provider);
+                Assert.assertEquals(getResponse().jsonPath().getString("paketData"), paketData);
+                Assert.assertEquals(getResponse().jsonPath().getString("harga"), price);
+                Assert.assertEquals(getResponse().jsonPath().getString("pembayaranMelalui"), "E-Walet");
+                Assert.assertTrue(getResponse().jsonPath().getBoolean("statusPembayaran"));
+            }
         } else if (paymentMethod.equals("VA")) {
             user.setPhoneNumber(phoneNumberForPayment);
             user.setVirtualAccount(virtualAccount);
             payWithVirtualAccount(user);
-            System.out.println(getResponse().getBody().asString());
-            assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-            assertion.responseBodyContains(responseBodyConfirmation);
+            Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+            Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
 
             if (!imageName.equals("-")) {
                 uploadInvoice("resources/image/DANA.jpg");
-                System.out.println(getResponse().getBody().asString());
-                assertion.statusCode(Integer.parseInt(statusCodeInvoice));
-                assertion.responseBodyContains(responseBodyInvoice);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeInvoice));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyInvoice));
             }
         }
 
@@ -137,7 +175,6 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
     @AfterClass
     public void afterClass() throws IOException {
         loginMenuConfig.deleteAcount("+6281252930365");
-        System.out.println(getResponse().getBody().asString());
         SetDataToExcel excel = new SetDataToExcel();
         excel.writeExcel(result, "Paket Data Purchase");
     }

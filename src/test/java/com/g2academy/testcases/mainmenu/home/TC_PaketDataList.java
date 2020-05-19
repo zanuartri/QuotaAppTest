@@ -1,14 +1,13 @@
 package com.g2academy.testcases.mainmenu.home;
 
-import com.g2academy.base.Assertion;
 import com.g2academy.base.MainMenuConfig;
 import com.g2academy.utilities.SetDataToExcel;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 public class TC_PaketDataList extends MainMenuConfig {
-    private Assertion assertion = new Assertion();
     private String[][] result = new String[50][5];
     private int testCaseIndex;
 
@@ -42,8 +41,12 @@ public class TC_PaketDataList extends MainMenuConfig {
 
         getPaketDataList(phoneNumber);
         System.out.println(getResponse().getBody().asString());
-        assertion.statusCode(Integer.parseInt(statusCodeRequest));
-        assertion.responseBodyContains(responseBodyRequest);
+        Assert.assertEquals(getResponse().getStatusCode(), Integer.parseInt(statusCodeRequest));
+
+        if (statusCodeRequest.equals("200")) {
+            Assert.assertTrue(getResponse().jsonPath().getString("paketData").contains(responseBodyRequest));
+        }
+
         result[testCaseIndex][4] = "SUCCESS";
     }
 

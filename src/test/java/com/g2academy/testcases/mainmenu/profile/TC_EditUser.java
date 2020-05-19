@@ -39,14 +39,14 @@ public class TC_EditUser extends MainMenuConfig {
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenuConfig.deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.register(user);
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.login(user);
-        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.register(user);
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.login(user);
+//        System.out.println(getResponse().getBody().asString());
     }
 
     @Test(dataProvider = "dataEditUser", timeOut = 30000)

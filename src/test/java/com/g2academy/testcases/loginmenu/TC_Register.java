@@ -1,16 +1,17 @@
 package com.g2academy.testcases.loginmenu;
 
-import com.g2academy.base.Assertion;
 import com.g2academy.base.LoginMenuConfig;
+import com.g2academy.base.OTPCode;
+import com.g2academy.base.TokenEmail;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 public class TC_Register extends LoginMenuConfig {
     private User user = new User();
-    private Assertion assertion = new Assertion();
     private String[][] result = new String[200][16];
     private int testCaseIndex;
 
@@ -38,8 +39,6 @@ public class TC_Register extends LoginMenuConfig {
         result[0][13] = "statusCodeConfirmation";
         result[0][14] = "responseBodyConfirmation";
         result[0][15] = "status";
-
-        deleteAcount("+6281252930362");
     }
 
     @Test(dataProvider = "dataRegister", timeOut = 30000)
@@ -77,8 +76,6 @@ public class TC_Register extends LoginMenuConfig {
         result[testCaseIndex][14] = responseBodyConfirmation;
         result[testCaseIndex][15] = "FAILED";
 
-        deleteAcount(phoneNumber);
-        System.out.println(getResponse().getBody().asString());
         user.setFullName(fullName);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
@@ -86,17 +83,56 @@ public class TC_Register extends LoginMenuConfig {
         user.setConfirmPassword(confirmPassword);
         user.setPinTransaction(pinTransaction);
         register(user);
-        System.out.println(getResponse().getBody().asString());
-        assertion.statusCode(Integer.parseInt(statusCodeRequest));
-        assertion.responseBodyContains(responseBodyRequest);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeRequest));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyRequest));
 
-        if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-            setOtpAndTokenRegister(user, verificationMethod, otpCode, statusOtpCode, token);
-            System.out.println(getResponse().getBody().asString());
-            assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-            assertion.responseBodyContains(responseBodyConfirmation);
-            deleteAcount(user.getPhoneNumber());
-            System.out.println(getResponse().getBody().asString());
+        if (verificationMethod.equals("OTP")) {
+            OTPCode otp = new OTPCode();
+
+            if (otpCode.equals("TRUE")) {
+                otp.getCode(user.getPhoneNumber());
+                String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+                Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+                Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+
+                otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, statusOtpCode);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+
+                if (statusOtpCode.equals("true")) {
+                    Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+                    Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                    Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
+                    Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
+                }
+            } else {
+                otp.sendCodeRegister(user.getPhoneNumber(), otpCode, statusOtpCode);
+                Assert.assertEquals(getResponse().jsonPath().get("status"), statusCodeConfirmation);
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+            }
+        } else if (verificationMethod.equals("TOKEN")) {
+            TokenEmail tokenEmail = new TokenEmail();
+
+            if (token.equals("TRUE")) {
+                tokenEmail.getToken(user.getEmail());
+                String generatedToken = getResponse().jsonPath().getString("codeVerify");
+                Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+                Assert.assertTrue(getResponse().jsonPath().getBoolean("statusEmailVerify"));
+
+                tokenEmail.sendTokenRegister(generatedToken);
+                Assert.assertEquals(getResponse().jsonPath().get("status"), statusCodeConfirmation);
+                Assert.assertEquals(getResponse().jsonPath().getString("message"), "signup is successfully");
+                Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+                Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
+                Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
+            } else {
+                tokenEmail.sendTokenRegister(token);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+            }
         }
 
         result[testCaseIndex][15] = "SUCCESS";
@@ -105,7 +141,6 @@ public class TC_Register extends LoginMenuConfig {
     @AfterMethod
     public void afterMethod() {
         deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
         testCaseIndex++;
     }
 

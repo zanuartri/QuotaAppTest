@@ -1,9 +1,8 @@
 package com.g2academy.base;
 
 public class TokenEmail extends RequestConfig {
-    public String getToken(String email) {
+    public void getToken(String email) {
         getRequest("/api/auth/qa-get-token/" + email);
-        return (String) getResponse().jsonPath().getString("codeVerify");
     }
 
     public void sendTokenRegister(String token) {

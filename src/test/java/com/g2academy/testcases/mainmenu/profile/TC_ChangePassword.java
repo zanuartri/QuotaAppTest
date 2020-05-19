@@ -45,14 +45,14 @@ public class TC_ChangePassword extends MainMenuConfig {
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-        loginMenuConfig.deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.register(user);
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-        System.out.println(getResponse().getBody().asString());
-        loginMenuConfig.login(user);
-        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.deleteAcount(user.getPhoneNumber());
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.register(user);
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+//        System.out.println(getResponse().getBody().asString());
+//        loginMenuConfig.login(user);
+//        System.out.println(getResponse().getBody().asString());
     }
 
     @Test(dataProvider = "dataChangePassword", timeOut = 30000)
@@ -101,16 +101,16 @@ public class TC_ChangePassword extends MainMenuConfig {
 
             if (verificationMethod.equals("OTP")) {
                 String generatedOTP = "";
-                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
-                else generatedOTP = otpCode;
+//                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
+//                else generatedOTP = otpCode;
                 otp.sendCodeForgotPassword(user.getPhoneNumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
                 System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
                 assertion.responseBodyContains(responseBodyNewPassword);
             } else if (verificationMethod.equals("TOKEN")) {
                 String generatedToken = "";
-                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
-                else generatedToken = token;
+//                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
+//                else generatedToken = token;
                 tokenEmail.sendTokenForgotPassword(generatedToken);
                 System.out.println(getResponse().getBody().asString());
                 assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
