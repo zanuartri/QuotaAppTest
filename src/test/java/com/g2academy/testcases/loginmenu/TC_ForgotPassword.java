@@ -38,19 +38,19 @@ public class TC_ForgotPassword extends LoginMenuConfig {
         result[0][14] = "responseBodyNewPassword";
         result[0][15] = "status";
 
-        user.setFullName("Zanuar Tri Romadon");
-        user.setEmail("testforgotpasswordbackend23@gmail.com");
-        user.setPhoneNumber("+6281252930360");
-        user.setPassword("Zanuar30@@");
-        user.setConfirmPassword("Zanuar30@@");
-        user.setConfirmPassword("Zanuar30@@");
-        user.setPinTransaction("123456");
-        deleteAcount(user.getPhoneNumber());
-        System.out.println(getResponse().getBody().asString());
-        register(user);
-        System.out.println(getResponse().getBody().asString());
-        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-        System.out.println(getResponse().getBody().asString());
+//        user.setFullName("Zanuar Tri Romadon");
+//        user.setEmail("testforgotpasswordbackend23@gmail.com");
+//        user.setPhoneNumber("+6281252930360");
+//        user.setPassword("Zanuar30@@");
+//        user.setConfirmPassword("Zanuar30@@");
+//        user.setConfirmPassword("Zanuar30@@");
+//        user.setPinTransaction("123456");
+//        deleteAcount(user.getPhoneNumber());
+//        System.out.println(getResponse().getBody().asString());
+//        register(user);
+//        System.out.println(getResponse().getBody().asString());
+//        setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
+//        System.out.println(getResponse().getBody().asString());
     }
 
     @Test(dataProvider = "dataForgotPassword", timeOut = 30000)
@@ -137,9 +137,9 @@ public class TC_ForgotPassword extends LoginMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        deleteAcount("+6281252930360");
-        System.out.println(getResponse().getBody().asString());
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Forgot Password");
+//        deleteAcount("+6281252930360");
+//        System.out.println(getResponse().getBody().asString());
+//        SetDataToExcel excel = new SetDataToExcel();
+//        excel.writeExcel(result, "Forgot Password");
     }
 }
