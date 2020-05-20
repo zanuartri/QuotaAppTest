@@ -93,14 +93,14 @@ mvn -Dtest=TC_Logout test'''
           }
         }
 
-        stage('Test Delete Account') {
-          steps {
-            sh '''export M2_HOME=/usr/local/Cellar/maven/3.6.3_1/libexec
+      }
+    }
+
+    stage('Test Delete Account') {
+      steps {
+        sh '''export M2_HOME=/usr/local/Cellar/maven/3.6.3_1/libexec
 export PATH=$PATH:$M2_HOME/bin
 mvn -Dtest=TC_DeleteAccount test'''
-          }
-        }
-
       }
     }
 
