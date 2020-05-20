@@ -145,7 +145,7 @@ public class TC_ForgotPassword extends RequestConfig {
                 Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeNewPassword));
                 Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyNewPassword));
             } else {
-                sendTokenRegister(token);
+                sendTokenForgotPassword(token);
                 Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
                 Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
             }
