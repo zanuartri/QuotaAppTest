@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class SetDataToExcel {
-    public void writeExcel(Object[][] data, String sheetName) throws IOException {
+    public static void write(Object[][] data, String sheetName) throws IOException {
         InputStream inp = new FileInputStream("test-output/QuotaAppReport.xlsx");
         Workbook wb = WorkbookFactory.create(inp);
         Sheet sheet = wb.getSheet(sheetName);

@@ -1,8 +1,6 @@
 package com.g2academy.testcases.loginmenu;
 
-import com.g2academy.base.LoginMenuConfig;
-import com.g2academy.base.OTPCode;
-import com.g2academy.base.TokenEmail;
+import com.g2academy.base.RequestConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.Assert;
@@ -10,10 +8,10 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_Register extends LoginMenuConfig {
+public class TC_Register extends RequestConfig {
     private User user = new User();
-    private String[][] result = new String[200][16];
     private int testCaseIndex;
+    private String[][] result = new String[200][16];
 
     @DataProvider(name="dataRegister")
     Object[][] getDataFromExcel() throws IOException {
@@ -87,16 +85,14 @@ public class TC_Register extends LoginMenuConfig {
         Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyRequest));
 
         if (verificationMethod.equals("OTP")) {
-            OTPCode otp = new OTPCode();
-
             if (otpCode.equals("TRUE")) {
-                otp.getCode(user.getPhoneNumber());
+                getOTPCode(user.getPhoneNumber());
                 String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
                 Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
                 Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
                 Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
 
-                otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, statusOtpCode);
+                sendOTPCodeRegister(user.getPhoneNumber(), generatedOtpCode, statusOtpCode);
                 Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
                 Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
 
@@ -107,21 +103,19 @@ public class TC_Register extends LoginMenuConfig {
                     Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
                 }
             } else {
-                otp.sendCodeRegister(user.getPhoneNumber(), otpCode, statusOtpCode);
+                sendOTPCodeRegister(user.getPhoneNumber(), otpCode, statusOtpCode);
                 Assert.assertEquals(getResponse().jsonPath().get("status"), statusCodeConfirmation);
                 Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
             }
         } else if (verificationMethod.equals("TOKEN")) {
-            TokenEmail tokenEmail = new TokenEmail();
-
             if (token.equals("TRUE")) {
-                tokenEmail.getToken(user.getEmail());
+                getToken(user.getEmail());
                 String generatedToken = getResponse().jsonPath().getString("codeVerify");
                 Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
                 Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
                 Assert.assertTrue(getResponse().jsonPath().getBoolean("statusEmailVerify"));
 
-                tokenEmail.sendTokenRegister(generatedToken);
+                sendTokenRegister(generatedToken);
                 Assert.assertEquals(getResponse().jsonPath().get("status"), statusCodeConfirmation);
                 Assert.assertEquals(getResponse().jsonPath().getString("message"), "signup is successfully");
                 Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
@@ -129,7 +123,7 @@ public class TC_Register extends LoginMenuConfig {
                 Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
                 Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
             } else {
-                tokenEmail.sendTokenRegister(token);
+                sendTokenRegister(token);
                 Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
                 Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
             }
@@ -140,13 +134,13 @@ public class TC_Register extends LoginMenuConfig {
 
     @AfterMethod
     public void afterMethod() {
-        deleteAcount(user.getPhoneNumber());
+        deleteAccount(user.getPhoneNumber());
+        Assert.assertEquals(getResponse().getStatusCode(), 200);
         testCaseIndex++;
     }
 
     @AfterClass
     public void afterClass() throws IOException {
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Register");
+        SetDataToExcel.write(result, "Register");
     }
 }

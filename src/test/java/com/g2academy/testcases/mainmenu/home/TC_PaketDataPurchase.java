@@ -1,9 +1,6 @@
 package com.g2academy.testcases.mainmenu.home;
 
-import com.g2academy.base.Assertion;
-import com.g2academy.base.LoginMenuConfig;
-import com.g2academy.base.MainMenuConfig;
-import com.g2academy.base.OTPCode;
+import com.g2academy.base.RequestConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.Assert;
@@ -11,11 +8,10 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_PaketDataPurchase extends MainMenuConfig {
+public class TC_PaketDataPurchase extends RequestConfig {
     private User user = new User();
-    private String[][] result = new String[200][18];
     private int testCaseIndex;
-    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
+    private String[][] result = new String[200][18];
 
     @DataProvider(name="paketDataPurchase")
     Object[][] getDataFromExcel() throws IOException {
@@ -24,8 +20,6 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
     @BeforeClass
     public void beforeClass() {
-        OTPCode otp = new OTPCode();
-
         testCaseIndex = 1;
         result[0][0] = "description";
         result[0][1] = "phoneNumber";
@@ -53,17 +47,17 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
 
-        loginMenuConfig.register(user);
+        register(user);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
-        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("+6281252930365 ----"));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(user.getPhoneNumber()));
 
-        otp.getCode(user.getPhoneNumber());
+        getOTPCode(user.getPhoneNumber());
         String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
         Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
         Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
         Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
 
-        otp.sendCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
+        sendOTPCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
         Assert.assertTrue(getResponse().jsonPath().getString("message").contains("signup is successfully"));
         Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
@@ -71,7 +65,7 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
         Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
         Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
 
-        loginMenuConfig.login(user);
+        login(user);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
         Assert.assertTrue(getResponse().jsonPath().getString("message").contains("successfully"));
         Assert.assertNotNull(getResponse().jsonPath().getString("token"));
@@ -174,8 +168,8 @@ public class TC_PaketDataPurchase extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930365");
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Paket Data Purchase");
+        deleteAccount("+6281252930365");
+        Assert.assertEquals(getResponse().getStatusCode(), 200);
+        SetDataToExcel.write(result, "Paket Data Purchase");
     }
 }

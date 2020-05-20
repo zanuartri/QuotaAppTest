@@ -1,8 +1,6 @@
 package com.g2academy.testcases.mainmenu.history;
 
-import com.g2academy.base.LoginMenuConfig;
-import com.g2academy.base.MainMenuConfig;
-import com.g2academy.base.TokenEmail;
+import com.g2academy.base.RequestConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
 import org.testng.Assert;
@@ -10,11 +8,10 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_PaketDataHistory extends MainMenuConfig {
+public class TC_PaketDataHistory extends RequestConfig {
     private User user = new User();
-    private String[][] result = new String[50][5];
     private int testCaseIndex;
-    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
+    private String[][] result = new String[50][5];
 
     @DataProvider(name="paketDataHistory")
     Object[][] getDataFromExcel() throws IOException {
@@ -23,8 +20,6 @@ public class TC_PaketDataHistory extends MainMenuConfig {
 
     @BeforeClass
     public void beforeClass() {
-        TokenEmail tokenEmail = new TokenEmail();
-
         testCaseIndex = 1;
         result[0][0] = "description";
         result[0][1] = "phone number";
@@ -39,17 +34,17 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
 
-        loginMenuConfig.register(user);
+        register(user);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
-        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("+6281252930353 ----"));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(user.getPhoneNumber()));
 
-        tokenEmail.getToken(user.getEmail());
+        getToken(user.getEmail());
         String generatedToken = getResponse().jsonPath().getString("codeVerify");
         Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
         Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
         Assert.assertTrue(getResponse().jsonPath().getBoolean("statusEmailVerify"));
 
-        tokenEmail.sendTokenRegister(generatedToken);
+        sendTokenRegister(generatedToken);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
         Assert.assertEquals(getResponse().jsonPath().getString("message"), "signup is successfully");
         Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
@@ -57,7 +52,7 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
         Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
 
-        loginMenuConfig.login(user);
+        login(user);
         Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
         Assert.assertTrue(getResponse().jsonPath().getString("message").contains("successfully"));
         Assert.assertNotNull(getResponse().jsonPath().getString("token"));
@@ -103,7 +98,6 @@ public class TC_PaketDataHistory extends MainMenuConfig {
         result[testCaseIndex][4] = "FAILED";
 
         getPaketDataHistory(phoneNumber);
-        System.out.println(getResponse().getBody().asString());
         Assert.assertEquals(getResponse().getStatusCode(), Integer.parseInt(statusCodeRequest));
 
         if (!responseBodyRequest.isEmpty()) {
@@ -126,8 +120,8 @@ public class TC_PaketDataHistory extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-        loginMenuConfig.deleteAcount("+6281252930353");
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Paket Data History");
+        deleteAccount("+6281252930353");
+        Assert.assertEquals(getResponse().getStatusCode(), 200);
+        SetDataToExcel.write(result, "Paket Data History");
     }
 }

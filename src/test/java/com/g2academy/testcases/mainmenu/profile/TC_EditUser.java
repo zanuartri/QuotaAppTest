@@ -1,18 +1,17 @@
 package com.g2academy.testcases.mainmenu.profile;
 
-import com.g2academy.base.*;
+import com.g2academy.base.RequestConfig;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_EditUser extends MainMenuConfig {
+public class TC_EditUser extends RequestConfig {
     private User user = new User();
-    private Assertion assertion = new Assertion();
-    private String[][] result = new String[100][16];
     private int testCaseIndex;
-    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
+    private String[][] result = new String[100][16];
 
     @DataProvider(name="dataEditUser")
     Object[][] getDataFromExcel() throws IOException {
@@ -33,20 +32,29 @@ public class TC_EditUser extends MainMenuConfig {
 
     @BeforeMethod
     public void beforeMethod() {
-//        user.setFullName("Zanuar Tri Romadon");
-//        user.setEmail("testedituserbackend23@gmail.com");
-//        user.setPhoneNumber("+6281252930368");
-//        user.setPassword("Zanuar30@@");
-//        user.setConfirmPassword("Zanuar30@@");
-//        user.setPinTransaction("123456");
-//        loginMenuConfig.deleteAcount(user.getPhoneNumber());
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.register(user);
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.login(user);
-//        System.out.println(getResponse().getBody().asString());
+        user.setFullName("Zanuar Tri Romadon");
+        user.setEmail("testedituserbackend23@gmail.com");
+        user.setPhoneNumber("+6281252930368");
+        user.setPassword("Zanuar30@@");
+        user.setConfirmPassword("Zanuar30@@");
+        user.setPinTransaction("123456");
+        register(user);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(user.getPhoneNumber()));
+
+        getOTPCode(user.getPhoneNumber());
+        String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+        Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+
+        sendOTPCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("signup is successfully"));
+        Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
+        Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
     }
 
     @Test(dataProvider = "dataEditUser", timeOut = 30000)
@@ -65,26 +73,22 @@ public class TC_EditUser extends MainMenuConfig {
         result[testCaseIndex][4] = statusCodeRequest;
         result[testCaseIndex][5] = responseBodyRequest;
         result[testCaseIndex][6] = "FAILED";
-//
-//        editUser(user, fullname, phoneNumber, email);
-//        System.out.println(getResponse().getBody().asString());
-//        assertion.statusCode(Integer.parseInt(statusCodeRequest));
-//        assertion.responseBodyContains(responseBodyRequest);
-//        loginMenuConfig.deleteAcount(phoneNumber);
-//        System.out.println(getResponse().getBody().asString());
+
+        editUser(user, fullname, phoneNumber, email);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeRequest));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyRequest));
         result[testCaseIndex][6] = "SUCCESS";
     }
 
     @AfterMethod
     public void afterMethod() {
         testCaseIndex++;
-//        loginMenuConfig.deleteAcount("+6281252930368");
-//        System.out.println(getResponse().getBody().asString());
+        deleteAccount("+6281252930368");
+        Assert.assertEquals(getResponse().getStatusCode(), 200);
     }
 
     @AfterClass
     public void afterClass() throws IOException {
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Edit User");
+        SetDataToExcel.write(result, "Edit User");
     }
 }

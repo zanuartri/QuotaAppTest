@@ -3,16 +3,15 @@ package com.g2academy.testcases.mainmenu.profile;
 import com.g2academy.base.*;
 import com.g2academy.model.User;
 import com.g2academy.utilities.SetDataToExcel;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class TC_ChangePassword extends MainMenuConfig {
+public class TC_ChangePassword extends RequestConfig {
     private User user = new User();
-    private Assertion assertion = new Assertion();
-    private String[][] result = new String[100][16];
     private int testCaseIndex;
-    private LoginMenuConfig loginMenuConfig = new LoginMenuConfig();
+    private String[][] result = new String[100][16];
 
     @DataProvider(name="dataChangePassword")
     Object[][] getDataFromExcel() throws IOException {
@@ -45,14 +44,32 @@ public class TC_ChangePassword extends MainMenuConfig {
         user.setPassword("Zanuar30@@");
         user.setConfirmPassword("Zanuar30@@");
         user.setPinTransaction("123456");
-//        loginMenuConfig.deleteAcount(user.getPhoneNumber());
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.register(user);
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.setOtpAndTokenRegister(user, "OTP", "TRUE", "true", "");
-//        System.out.println(getResponse().getBody().asString());
-//        loginMenuConfig.login(user);
-//        System.out.println(getResponse().getBody().asString());
+        register(user);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(user.getPhoneNumber()));
+
+        getOTPCode(user.getPhoneNumber());
+        String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+        Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+
+        sendOTPCodeRegister(user.getPhoneNumber(), generatedOtpCode, "true");
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("signup is successfully"));
+        Assert.assertEquals(getResponse().jsonPath().getString("noTelepon"), user.getPhoneNumber());
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertEquals(getResponse().jsonPath().getString("pinTransaksi"), user.getPinTransaction());
+        Assert.assertEquals(getResponse().jsonPath().getInt("saldo"), 1000000);
+
+        login(user);
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), 200);
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains("successfully"));
+        Assert.assertNotNull(getResponse().jsonPath().getString("token"));
+        Assert.assertEquals(getResponse().jsonPath().getString("type"), "Bearer");
+        Assert.assertEquals(getResponse().jsonPath().getString("username"), user.getPhoneNumber());
+        Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+        Assert.assertNotNull(getResponse().jsonPath().getString("saldo"));
     }
 
     @Test(dataProvider = "dataChangePassword", timeOut = 30000)
@@ -73,57 +90,67 @@ public class TC_ChangePassword extends MainMenuConfig {
             String statusCodeNewPassword,
             String responseBodyNewPassword
     ) {
-//        result[testCaseIndex][0] = description;
-//        result[testCaseIndex][1] = phoneNumber;
-//        result[testCaseIndex][2] = email;
-//        result[testCaseIndex][3] = statusCodeRequest;
-//        result[testCaseIndex][4] = responseBodyRequest;
-//        result[testCaseIndex][5] = verificationMethod;
-//        result[testCaseIndex][6] = otpCode;
-//        result[testCaseIndex][7] = statusOtpCode;
-//        result[testCaseIndex][8] = token;
-//        result[testCaseIndex][9] = statusCodeConfirmation;
-//        result[testCaseIndex][10] = responseBodyConfirmation;
-//        result[testCaseIndex][11] = newPassword;
-//        result[testCaseIndex][12] = confirmNewPassword;
-//        result[testCaseIndex][13] = statusCodeNewPassword;
-//        result[testCaseIndex][14] = responseBodyNewPassword;
-//        result[testCaseIndex][15] = "FAILED";
-//
-//        user.setPhoneNumber(phoneNumber);
-//        user.setEmail(email);
-//        resetPassword(user);
-//        System.out.println(getResponse().getBody().asString());
-//
-//        if (verificationMethod.equals("OTP") || verificationMethod.equals("TOKEN")) {
-//            OTPCode otp = new OTPCode();
-//            TokenEmail tokenEmail = new TokenEmail();
-//
-//            if (verificationMethod.equals("OTP")) {
-//                String generatedOTP = "";
-//                if (otpCode.equals("TRUE")) generatedOTP = otp.getCode(user.getPhoneNumber());
-//                else generatedOTP = otpCode;
-//                otp.sendCodeForgotPassword(user.getPhoneNumber(), generatedOTP, statusOtpCode, newPassword, confirmNewPassword);
-//                System.out.println(getResponse().getBody().asString());
-//                assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
-//                assertion.responseBodyContains(responseBodyNewPassword);
-//            } else if (verificationMethod.equals("TOKEN")) {
-//                String generatedToken = "";
-//                if (token.equals("TRUE")) generatedToken = tokenEmail.getToken(user.getEmail());
-//                else generatedToken = token;
-//                tokenEmail.sendTokenForgotPassword(generatedToken);
-//                System.out.println(getResponse().getBody().asString());
-//                assertion.statusCode(Integer.parseInt(statusCodeConfirmation));
-//                assertion.responseBodyContains(responseBodyConfirmation);
-//
-//                if (token.equals("TRUE")) {
-//                    changePassword(user, newPassword, confirmNewPassword);
-//                    System.out.println(getResponse().getBody().asString());
-//                    assertion.statusCode(Integer.parseInt(statusCodeNewPassword));
-//                    assertion.responseBodyContains(responseBodyNewPassword);
-//                }
-//            }
-//        }
+        result[testCaseIndex][0] = description;
+        result[testCaseIndex][1] = phoneNumber;
+        result[testCaseIndex][2] = email;
+        result[testCaseIndex][3] = statusCodeRequest;
+        result[testCaseIndex][4] = responseBodyRequest;
+        result[testCaseIndex][5] = verificationMethod;
+        result[testCaseIndex][6] = otpCode;
+        result[testCaseIndex][7] = statusOtpCode;
+        result[testCaseIndex][8] = token;
+        result[testCaseIndex][9] = statusCodeConfirmation;
+        result[testCaseIndex][10] = responseBodyConfirmation;
+        result[testCaseIndex][11] = newPassword;
+        result[testCaseIndex][12] = confirmNewPassword;
+        result[testCaseIndex][13] = statusCodeNewPassword;
+        result[testCaseIndex][14] = responseBodyNewPassword;
+        result[testCaseIndex][15] = "FAILED";
+
+        user.setPhoneNumber(phoneNumber);
+        user.setEmail(email);
+        resetPassword(user);
+        System.out.println(getResponse().getBody().asString());
+        Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeRequest));
+        Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyRequest));
+
+        if (verificationMethod.equals("OTP")) {
+            if (otpCode.equals("TRUE")) {
+                getOTPCode(user.getPhoneNumber());
+                String generatedOtpCode = getResponse().jsonPath().getString("codeOtp");
+                Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+                Assert.assertTrue(getResponse().jsonPath().getBoolean("statusOtp"));
+
+                sendOTPCodeForgotPassword(user.getPhoneNumber(), generatedOtpCode, statusOtpCode, newPassword, confirmNewPassword);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+            } else {
+                sendOTPCodeForgotPassword(user.getPhoneNumber(), otpCode, statusOtpCode, newPassword, confirmNewPassword);
+                Assert.assertEquals(getResponse().jsonPath().get("status"), statusCodeConfirmation);
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+            }
+        } else if (verificationMethod.equals("TOKEN")) {
+            if (token.equals("TRUE")) {
+                getToken(user.getEmail());
+                String generatedToken = getResponse().jsonPath().getString("codeVerify");
+                Assert.assertEquals(getResponse().jsonPath().getString("email"), user.getEmail());
+                Assert.assertEquals(getResponse().jsonPath().getString("mobileNumber"), user.getPhoneNumber());
+                Assert.assertTrue(getResponse().jsonPath().getBoolean("statusEmailVerify"));
+
+                sendTokenForgotPassword(generatedToken);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+
+                changePassword(user, newPassword, confirmNewPassword);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeNewPassword));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyNewPassword));
+            } else {
+                sendTokenRegister(token);
+                Assert.assertEquals(getResponse().jsonPath().getInt("status"), Integer.parseInt(statusCodeConfirmation));
+                Assert.assertTrue(getResponse().jsonPath().getString("message").contains(responseBodyConfirmation));
+            }
+        }
 
         result[testCaseIndex][15] = "SUCCESS";
     }
@@ -135,9 +162,8 @@ public class TC_ChangePassword extends MainMenuConfig {
 
     @AfterClass
     public void afterClass() throws IOException {
-//        loginMenuConfig.deleteAcount("+6281252930366");
-//        System.out.println(getResponse().getBody().asString());
-        SetDataToExcel excel = new SetDataToExcel();
-        excel.writeExcel(result, "Change Password");
+        deleteAccount("+6281252930366");
+        Assert.assertEquals(getResponse().getStatusCode(), 200);
+        SetDataToExcel.write(result, "Change Password");
     }
 }
