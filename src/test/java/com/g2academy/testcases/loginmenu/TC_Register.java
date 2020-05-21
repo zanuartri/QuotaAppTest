@@ -135,7 +135,6 @@ public class TC_Register extends RequestConfig {
     @AfterMethod
     public void afterMethod() {
         deleteAccount(user.getPhoneNumber());
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
         testCaseIndex++;
     }
 

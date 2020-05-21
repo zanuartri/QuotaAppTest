@@ -112,7 +112,6 @@ public class TC_Logout extends RequestConfig {
     @AfterClass
     public void afterClass() throws IOException {
         deleteAccount("+6281252930369");
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
         SetDataToExcel.write(result, "Logout");
     }
 }

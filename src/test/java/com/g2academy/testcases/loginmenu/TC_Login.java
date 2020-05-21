@@ -89,13 +89,11 @@ public class TC_Login extends RequestConfig {
     public void afterMethod() {
         testCaseIndex++;
         logout(user);
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
     }
 
     @AfterClass
     public void afterClass() throws IOException {
         deleteAccount("+6281252930361");
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
         SetDataToExcel.write(result, "Login");
     }
 }

@@ -3,17 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default Suite]">
   <test thread-count="5" name="QuotaAppTest(failed)">
     <classes>
-      <class name="com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount">
+      <class name="com.g2academy.testcases.loginmenu.TC_Register">
         <methods>
           <include name="afterClass"/>
           <include name="afterMethod"/>
           <include name="beforeClass"/>
           <include name="setup"/>
-          <include name="beforeMethod"/>
+          <include name="testRegister" invocation-numbers="0"/>
           <include name="teardown"/>
-          <include name="testDeleteAccount"/>
         </methods>
-      </class> <!-- com.g2academy.testcases.mainmenu.profile.TC_DeleteAccount -->
+      </class> <!-- com.g2academy.testcases.loginmenu.TC_Register -->
     </classes>
   </test> <!-- QuotaAppTest(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->

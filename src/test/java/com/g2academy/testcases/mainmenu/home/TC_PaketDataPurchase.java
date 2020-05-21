@@ -169,7 +169,6 @@ public class TC_PaketDataPurchase extends RequestConfig {
     @AfterClass
     public void afterClass() throws IOException {
         deleteAccount("+6281252930365");
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
         SetDataToExcel.write(result, "Paket Data Purchase");
     }
 }

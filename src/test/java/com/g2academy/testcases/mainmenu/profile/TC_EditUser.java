@@ -84,7 +84,6 @@ public class TC_EditUser extends RequestConfig {
     public void afterMethod() {
         testCaseIndex++;
         deleteAccount("+6281252930368");
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
     }
 
     @AfterClass

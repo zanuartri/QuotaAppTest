@@ -163,7 +163,6 @@ public class TC_ChangePassword extends RequestConfig {
     @AfterClass
     public void afterClass() throws IOException {
         deleteAccount("+6281252930366");
-        Assert.assertEquals(getResponse().getStatusCode(), 200);
         SetDataToExcel.write(result, "Change Password");
     }
 }
